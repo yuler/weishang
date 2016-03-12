@@ -20,6 +20,10 @@ export default (router) => {
       name:'success',
       component:require('./views/authorized-success.vue')
     },
+    '/success1':{
+      name:'success',
+      component:require('./views/register-success.vue')
+    },
     '/register':{
       component:require('./views/register.vue')
     }
