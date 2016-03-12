@@ -9,7 +9,10 @@
        url(/node_modules/material-design-icons/iconfont/MaterialIcons-Regular.woff) format('woff'),
        url(/node_modules/material-design-icons/iconfont/MaterialIcons-Regular.ttf) format('truetype');
 }
-
+*{
+  margin: 0;
+  padding: 0;
+}
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
@@ -35,8 +38,6 @@
   font-feature-settings: 'liga';
 }
 
-
-// init css
 html{background:none repeat scroll 0 0#FFFFFF;color:#000000;}
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
 table{border-collapse:collapse;border-spacing:0;}
@@ -62,7 +63,6 @@ strong{font-weight:bold;}
 input[type="submit"]{cursor:pointer;}
 button{cursor:pointer;}
 
-// app
 .my-user{
   position: absolute;
   right: 10px;

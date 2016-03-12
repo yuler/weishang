@@ -3,7 +3,7 @@
 	<router-view></router-view>
 </template>
 <style>
-
+	
 </style>
 <script>
 	import Appbar from './components/appbar.vue'
