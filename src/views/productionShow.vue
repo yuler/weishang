@@ -58,9 +58,43 @@ export default {
 	methods: {
 		buy: function () {
 			this.state.pay = true;
+		},
+		pay: function () {
+			api.pay.userPay('7f9a2222627343dc8217ee4aed392a2a')
+				.then(res => {
+					BC.click({
+						out_trade_no: res.out_trade_no,
+						title: res.title,
+						amount: res.amount,
+						sign: res.sign,
+						return_url:"http://www.baidu.com",
+						debug:true,
+						optional:{
+							type:'USER_PAY',
+							out_trade_no:res.out_trade_no
+						},
+						instant_channel:"ali",
+						need_ali_guide:"true"
+						
+					}, {
+						dataError:function(msg){
+							console.log(msg);
+						},wxJsapiFinish:function(msg){
+							alert(msg);
+						},wxJsapiSuccess:function(msg){
+							alert(msg);
+						},wxJsapiFail:function(msg){
+							alert(msg);
+						}
+					});
+				})
 		}
 	}
 }
+
+function bcPay() {
+			
+	 }
 </script>
 <style>
 #productionShow img { width: 100%; }

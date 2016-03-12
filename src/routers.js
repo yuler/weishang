@@ -15,6 +15,13 @@ export default (router) => {
     '/p/:id': {
       name: 'productionShow',
       component: require('./views/productionShow.vue')
+    },
+    '/success':{
+      name:'success',
+      component:require('./views/authorized-success.vue')
+    },
+    '/register':{
+      component:require('./views/register.vue')
     }
   })
 }
