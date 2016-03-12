@@ -5,6 +5,8 @@ import { Promise } from 'es6-promise'
 const host = 'http://123.56.235.156/vs/front';
 const productIndex = host + '/product';
 const productShow = host + '/'
+const userPay = 'http://123.56.235.156/vs/pay/userPay'
+const regsiter = `${host}/user/register`
 
 export default {
 	productions: {
@@ -23,9 +25,23 @@ export default {
 					resolve(JSON.parse(res.body))
 				})
 			})
+  	},
+  },
+	pay: {
+		userPay: (out_trade_no) => {
+			return new Promise((resolve, reject) => {
+				xhr(`${userPay}?out_trade_no=${out_trade_no}`, (err, res) => {
+					if(err) return reject(err)
+					resolve(JSON.parse(res.body))
+				})
+			}) 
+		}
+	},
+	user: {
+		regsiter: () => {
+
 		}
 	}
-
 } 
 
 

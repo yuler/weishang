@@ -1,12 +1,12 @@
 <template>
-<div class="viewport">
+<div>
     <div class="container register-pannel">
         <div class="input-item">
             <input type="tel" maxlength="11" minlength="11" placeholder="请输入您的手机号码" id="phoneNumber" />
         </div>
         <div class="input-item">
             <input type="text" placeholder="请输入验证码" id="checkCode" class="code-input" />
-            <span class="btn code-btn" id="getCode">获取验证码</span>
+            <span class="btn code-btn" id="getCode" disabled="true" @click="">获取验证码</span>
         </div>
         <div class="input-item">
             <input type="password" placeholder="请输入您的密码" id="passWord1" />
@@ -30,6 +30,10 @@
 </div>
 </template>
 
+<script>
+    
+</script>
+
 <style>
 .register-pannel .input-item{
     margin: 30px 15px;
@@ -43,7 +47,7 @@
     border:solid 1px #AAAAAA;
 }
 .register-pannel .input-item .code-input{
-     width: 63%!important;
+    width: 63%!important;
     display: inline-block;
 }
 
