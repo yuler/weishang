@@ -1,9 +1,12 @@
 <template>
 	<appbar></appbar>
-	<router-view></router-view>
+	<div class="container">
+		<router-view></router-view>
+	</div>
 </template>
-<style>
-	
+<style lang="stylus" scoped>
+div.container
+	margin-top 43px
 </style>
 <script>
 	import Appbar from './components/appbar.vue'

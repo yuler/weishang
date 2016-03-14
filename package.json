@@ -12,6 +12,7 @@
   "dependencies": {
     "es6-promise": "^3.0.2",
     "vue": "^1.0.16",
+    "vue-resource": "^0.7.0",
     "vue-router": "^0.7.10",
     "xhr": "^2.2.0"
   },
@@ -23,7 +24,6 @@
     "babel-runtime": "^5.8.34",
     "css-loader": "^0.23.1",
     "stylus-loader": "^1.5.0",
-    "template-html-loader": "0.0.3",
     "vue-hot-reload-api": "^1.2.2",
     "vue-html-loader": "^1.1.0",
     "vue-loader": "^8.0.2",

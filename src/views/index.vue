@@ -4,7 +4,6 @@
 	    <li v-for="p in productions">
 	    	<a v-link="{ name: 'productionShow', params: { id: p.id }}">
 	        <img v-bind:src="p.photoIds | getImagePoster">
-	        <!-- <span v-text="p.photoIds | getImagePoster"></span> -->
 	        <div>
 	        	<p>{{p.name}}</p>
 	        	<p>{{p.summary}}</p>

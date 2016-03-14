@@ -2,17 +2,17 @@
 <div>
     <div class="container register-pannel">
         <div class="input-item">
-            <input type="tel" maxlength="11" minlength="11" placeholder="请输入您的手机号码" id="phoneNumber" />
+            <input v-model="user.mobile" type="tel" maxlength="11" minlength="11" placeholder="请输入您的手机号码" id="phoneNumber" />
         </div>
         <div class="input-item">
-            <input type="text" placeholder="请输入验证码" id="checkCode" class="code-input" />
-            <span class="btn code-btn" id="getCode" disabled="true" @click="">获取验证码</span>
+            <input v-model="user.code" type="text" placeholder="请输入验证码" id="checkCode" class="code-input" />
+            <span class="btn code-btn" id="getCode" disabled="true" @click="sendSMSVerify()">获取验证码</span>
         </div>
         <div class="input-item">
-            <input type="password" placeholder="请输入您的密码" id="passWord1" />
+            <input v-model="user.password" type="password" placeholder="请输入您的密码"/>
         </div>
         <div class="input-item">
-            <input type="password" placeholder="请再次输入您的密码" id="passWord2" />
+            <input v-model="user.tjr" type="password" placeholder="请再次输入您的密码"/>
         </div>
         <div class="input-item info">
             <div class="info-container">
@@ -24,14 +24,61 @@
             </div>
         </div>
         <div class="input-item">
-           <span class="btn submit-btn" id="registerCommit">注册</span>
+           <span class="btn submit-btn" @click="login()">注册</span>
         </div>
     </div>
 </div>
 </template>
 
 <script>
-    
+import api from '../api.js'
+
+export default {
+    data () {
+        return {
+            user: {},
+        }
+    },
+    route: {
+        data ({ to }) {
+            this.user.tjr = this.$route.userId;
+            return api.user.get(this.user.tjr)
+                .then(res => {
+                    console.log(res);
+                    return {
+                        productions: res.rows,
+                    }
+                }, err => {
+                    console.log(err);
+                    alert('接口错误');
+                })
+        }
+    },
+    methods: {
+        sendSMSVerify: function () {
+            console.log('obj');
+            if(!this.user.mobile) return;
+            api.user.sendSMSCode(this.user.mobile)
+                .then( res => {
+                    console.log(res);
+                }, error => {
+
+                })
+        },
+        login: function () {
+            console.log(this.user);
+            api.user.regsiter(this.user)
+                .then(res => {
+                    return {
+                        productions: res.rows,
+                    }
+                }, err => {
+                    console.log(err);
+                    alert('接口错误');
+                })
+        }
+    }
+}
 </script>
 
 <style>
