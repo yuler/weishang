@@ -1,5 +1,5 @@
 var webpack = require('webpack');
-var staticPath = '/static';
+var staticPath = '/static/';
 
 module.exports = {
   entry: {

@@ -1,5 +1,3 @@
-<!--认证成功-->
-
 <template>
     <div class='viewport'>
         <div class='container'>
@@ -7,7 +5,7 @@
                 <div class='success-pannel'><span class="success-icon"><img src='/src/assets/i/success-icon.png' /></span></div>
                 <div class="success-tag">认证成功</div>
                 <div class="success-tag2">您已完成认证</div>
-                <a href='#'><div class="success-tag3">>>>前往首页<<<</div></a>
+                <a href='#'><div class="success-tag3">前往首页</div></a>
             </div>
             <div class='floor-item company-info'>
                 <div class="success-tag2">产品名称或公司</div>

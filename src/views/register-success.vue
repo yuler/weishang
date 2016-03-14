@@ -1,32 +1,29 @@
-<!--认证成功-->
-
 <template>
-    <div class='viewport'>
-        <div class='container'>
-            <div class='floor-item margin-t'>
-                <div class='success-pannel'><span class="success-icon"><img src='/src/assets/i/success-icon.png' /></span></div>
-                <div class="success-tag">注册成功</div>
-                <div class="success-tag2">您的账户处于未认证状态无法使用系统查价购买等功能。</div>
-                <a href='#'><div class="success-tag3">>>>点击前往认证平台完成认证<<<</div></a>
-                <div class="success-tag2">认证费:<span class="authorized-change">￥100</span></div>
-
-                 <div class="info">
-                            <div class="info-container">
-                                <span class="tuijian-pic"><img src="/src/assets/i/role.png"></span>
-                                <span class="tuijian-info">
-                                    <span>推荐人</span>
-                                    <span class="name">李老大</span>
-                                </span>
-                            </div>
+<div class='viewport'>
+    <div class='container'>
+        <div class='floor-item margin-t'>
+            <div class='success-pannel'><span class="success-icon"><img src='/src/assets/i/success-icon.png' /></span></div>
+            <div class="success-tag">注册成功</div>
+            <div class="success-tag2">您的账户处于未认证状态无法使用系统查价购买等功能。</div>
+            <a href='#'><div class="success-tag3">点击前往认证平台完成认证</div></a>
+            <div class="success-tag2">认证费:<span class="authorized-change">￥100</span></div>
+             <div class="info">
+                        <div class="info-container">
+                            <span class="tuijian-pic"><img src="/src/assets/i/role.png"></span>
+                            <span class="tuijian-info">
+                                <span>推荐人</span>
+                                <span class="name">李老大</span>
+                            </span>
                         </div>
-            </div>
-            <div class='floor-item company-info'>
-                <div class="success-tag2">产品名称或公司</div>
-                <div class="success-tag2">@copyright</div>
-                <a href='#'><div class="success-tag4">>>>跳过认证<<<</div></a>
-            </div>
+                    </div>
+        </div>
+        <div class='floor-item company-info'>
+            <div class="success-tag2">产品名称或公司</div>
+            <div class="success-tag2">@copyright</div>
+            <a href='#'><div class="success-tag4">跳过认证</div></a>
         </div>
     </div>
+</div>
 </template>
 
 <style>

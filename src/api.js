@@ -4,7 +4,7 @@ import { Promise } from 'es6-promise'
 import Vue from 'vue'
 // import 
 // 常量
-const HOST = 'http://123.56.235.156/vs';
+const HOST = '/vs';
 const API_PRODUCT_INDEX_API = `${HOST}/front/product`
 const API_PRODUCT_SHOW_API = `${HOST}/front/product/info`
 const API_USER_PAY_URL = `${HOST}/vs/front/pay/userPay`
@@ -16,21 +16,11 @@ Vue.http.options.emulateJSON = true
 
 export default {
 	productions: {
-		index: () => {
-			return new Promise((resolve, reject) => {
-				xhr(`${API_PRODUCT_INDEX_API}`, (err, res) => {
-					if(err) return reject(err)
-					resolve(JSON.parse(res.body))
-				})
-			})
+		index: (pageNo = 1, pageSize = 1) => {
+			return Vue.http.get(`${API_PRODUCT_INDEX_API}`, { pageNo: pageNo, pageSize: pageSize })
 		},
 		get: (id) => {
-			return new Promise((resolve, reject) => {
-				xhr(`${API_PRODUCT_SHOW_API}?id=${id}`, (err, res) => {
-					if(err) return reject(err)
-					resolve(JSON.parse(res.body))
-				})
-			})
+			return Vue.http.get(`${API_PRODUCT_SHOW_API}`, { id: id })
   	},
   },
 	pay: {

@@ -6,7 +6,7 @@
 </template>
 <style lang="stylus" scoped>
 div.container
-	margin-top 43px
+	margin-top 44px
 </style>
 <script>
 	import Appbar from './components/appbar.vue'

@@ -1,20 +1,18 @@
 <template>
-<div id="productions">
-	<ul class="productions">
-	    <li v-for="p in productions">
-	    	<a v-link="{ name: 'productionShow', params: { id: p.id }}">
-	        <img v-bind:src="p.photoIds | getImagePoster">
-	        <div>
-	        	<p>{{p.name}}</p>
-	        	<p>{{p.summary}}</p>
-	        	<p>{{p.productType.name}}</p>
-	        	<p></p>
-	        </div>
-	        <p>{{ p.price }}</p>
-	      </a>
-	    </li>
-	</ul>
-</div>
+<ul class="productions items" id="productions" @scroll="scrollFunc">
+    <li v-for="p in productions">
+    	<a v-link="{ name: 'productionShow', params: { id: p.id }}">
+        <img v-bind:src="p.photoIds | getImagePoster">
+        <div>
+        	<p>{{p.name}}</p>
+        	<p>{{p.summary}}</p>
+        	<p>{{p.productType.name}}</p>
+        	<p></p>
+        </div>
+        <p>{{ p.price }}</p>
+      </a>
+    </li>
+</ul>
 </template>
 
 <script>
@@ -32,13 +30,7 @@ export default {
 				.then(res => {
 					console.log(res);
 					return {
-						productions: res.rows,
-					// 	// pagination: {
-					// 	// 	total: res.count,
-					// 	// 	page: to.query.page || 1,
-					// 	// 	limit: to.query.limit || 10,
-					// 	// 	url: to.fullPath,
-					// 	// }
+						productions: res.data.rows,
 					}
 				}, err => {
 					console.log(err);
@@ -47,38 +39,46 @@ export default {
 		}
 	},
 	methods: {
-		productionShow: function (id) {
-			alert('msg');
+		scrollFunc: function (e) {
+			if ((e.target.scrollTop + e.target.offsetHeight) >= e.target.scrollHeight) {
+        console.info('向下滚动');
+      }
 		}
 	}
 }
 </script>
 
 <style>
-#productions .productions li {
+.items {
+  position: fixed;
+  top: 44px;
+  bottom: 0;
+  overflow-y: auto;
+}
+#productions li {
 	padding: 10px 10px;
 	border-bottom: 1px solid #ccc;
 }
-#productions .productions li a {
+#productions li a {
 	display: block;
 }
-#productions .productions li a img {
+#productions li a img {
 	float: left;
 	width: 50px;
 	height: 50px;
 }
-#productions .productions li a div {
+#productions li a div {
 	width: -webkit-calc(100% - 120px);
 	display: inline-block;
 	margin-left: 10px;
 }
-#productions .productions li a div p {
+#productions li a div p {
 	overflow: hidden;
   white-space: nowrap;
 	text-overflow:ellipsis;
 	margin: 0;
 }
-#productions .productions li a > p {
+#productions li a > p {
 	margin: -10px 0;
   display: inline-block;
   line-height: 100px;

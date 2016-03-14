@@ -1,13 +1,12 @@
 <template>
-  <div id="productionShow">
-		<img v-bind:src="production.photoIds | getImagePoster">
-		<h1>{{production.name}}</h1>
-		<p class="addrs"></p>
-		<p class="intro">{{production.summary}}</p>
-		<a class="btn" @click="buy()" v-if="state.buy && !state.pay">购买</a>
-		<a class="btn" @click="pay()" v-if="state.pay">支付</a>
-  </div>
-
+<div id="productionShow">
+	<img v-bind:src="production.photoIds | getImagePoster">
+	<h1>{{production.name}}</h1>
+	<p class="addrs"></p>
+	<p class="intro">{{production.summary}}</p>
+	<a class="btn" @click="buy()" v-if="state.buy && !state.pay">购买</a>
+	<a class="btn" @click="pay()" v-if="state.pay">支付</a>
+</div>
 <form class="buyFrom" v-if="state.pay">
 	<div>
 		<label for="">购买数量</label>
@@ -47,7 +46,7 @@ export default {
 				.then(res => {
 					console.log(res);
 					return {
-						production: res,
+						production: res.data,
 					}
 				}, err => {
 					console.log(err);

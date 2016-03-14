@@ -1,5 +1,7 @@
 <template>
-	<p>This is login!</p>
+<from>
+	
+</from>
 </template>
 <style>
 	

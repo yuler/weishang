@@ -26,6 +26,9 @@ export default (router) => {
     },
     '/register/:userId':{
       component:require('./views/register.vue')
-    }
+    },
+		'*': {
+			component: require('./views/404.vue')			
+		}
   })
 }

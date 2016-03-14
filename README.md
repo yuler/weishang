@@ -2,6 +2,6 @@
 npm install 
 
 # 启动 server
-npm run dev
+node server.js
 
 # 这个说明文档

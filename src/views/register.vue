@@ -41,17 +41,17 @@ export default {
     },
     route: {
         data ({ to }) {
-            this.user.tjr = this.$route.userId;
-            return api.user.get(this.user.tjr)
-                .then(res => {
-                    console.log(res);
-                    return {
-                        productions: res.rows,
-                    }
-                }, err => {
-                    console.log(err);
-                    alert('接口错误');
-                })
+            // this.user.tjr = this.$route.userId;
+            // return api.user.get(this.user.tjr)
+            //     .then(res => {
+            //         console.log(res);
+            //         return {
+            //             productions: res.rows,
+            //         }
+            //     }, err => {
+            //         console.log(err);
+            //         alert('接口错误');
+            //     })
         }
     },
     methods: {
