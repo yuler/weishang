@@ -1,7 +1,7 @@
 <!--认证成功-->
 
 <template>
-    <div class='viewport'>
+    <div class='viewports'>
         <div class='container'>
             <div class='floor-item margin-t'>
                 <div class='success-pannel'><span class="success-icon"><img src='/src/assets/i/success-icon.png' /></span></div>
@@ -20,7 +20,7 @@
                             </div>
                         </div>
             </div>
-            <div class='floor-item company-info'>
+            <div class='floor-item'>
                 <div class="success-tag2">产品名称或公司</div>
                 <div class="success-tag2">@copyright</div>
                 <a href='#'><div class="success-tag4">>>>跳过认证<<<</div></a>
@@ -77,17 +77,17 @@
      }
 
       .info {
-         height: 180px;
+         height: 160px;
          text-align: center;
          position: relative;
-         border-bottom: solid 1px #B0B0B0;
+
          margin: 0;
      }
-     .register-pannel .info-container{
+    .info-container{
 
-     width: 125px;
+     width: 100px;
 
-     height: 125px;
+     height: 100px;
 
      text-align: center;
 
@@ -107,27 +107,27 @@
 
      vertical-align: middle;
      }
-     .register-pannel .tuijian-pic{
+    .tuijian-pic{
          display: inline-block;
          width: 44px;
          height: 44px;
          overflow: hidden;
          margin-top: 5px;
      }
-     .register-pannel .tuijian-pic img{
+     .tuijian-pic img{
          max-width: 100%;
          max-height: 100%;
      }
-     .register-pannel .tuijian-info {
+    .tuijian-info {
          display: inline-block;
          font-size: 15px;
          color: #636363;
-         margin-top: -4px;
+         margin-top: 10px;
      }
-     .register-pannel span.tuijian-info{
+     span.tuijian-info{
          display: inline-block;
      }
-     .register-pannel .tuijian-info .name{
+      .tuijian-info .name{
          font-size: 17px;
          color: #313131;
      }

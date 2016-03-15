@@ -1,21 +1,30 @@
 <template>
-<div id="productions">
-	<ul class="productions">
-	    <li v-for="p in productions">
-	    	<a v-link="{ name: 'productionShow', params: { id: p.id }}">
-	        <img v-bind:src="p.photoIds | getImagePoster">
-	        <!-- <span v-text="p.photoIds | getImagePoster"></span> -->
-	        <div>
-	        	<p>{{p.name}}</p>
-	        	<p>{{p.summary}}</p>
-	        	<p>{{p.productType.name}}</p>
-	        	<p></p>
-	        </div>
-	        <p>{{ p.price }}</p>
-	      </a>
-	    </li>
-	</ul>
+<div class="viewports">
+	<div class='container index-pannel'>
+		<div class="floor-item ">
+			<div id="productions">
+            	<ul class="productions">
+            	    <li v-for="p in productions" class="split-line">
+            	    	<div class=""></div>
+            	    	<a v-link="{ name: 'productionShow', params: { id: p.id }}">
+            	        <img v-bind:src="p.photoIds | getImagePoster">
+            	        <!-- <span v-text="p.photoIds | getImagePoster"></span> -->
+            	        <div>
+            	        	<p>{{p.name}}</p>
+            	        	<p>{{p.summary}}</p>
+            	        	<p>{{p.productType.name}}</p>
+            	        	<p></p>
+            	        </div>
+            	        <p>{{ p.price }}</p>
+            	      </a>
+            	    </li>
+            	</ul>
+            </div>
+		</div>
+	</div>
 </div>
+
+
 </template>
 
 <script>
@@ -56,9 +65,11 @@ export default {
 </script>
 
 <style>
+.index-pannel{
+	font-size:16px;
+}
 #productions .productions li {
 	padding: 10px 10px;
-	border-bottom: 1px solid #ccc;
 }
 #productions .productions li a {
 	display: block;

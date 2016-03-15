@@ -69,7 +69,7 @@ button{cursor:pointer;}
   top: 10px;
   font-size: 18px;
 }
-.viewport{
+.viewports{
   width: 100%;
   height: 100%;
   font-size: 0px;
@@ -118,6 +118,11 @@ ul,li{
   padding-bottom: 18px;
   margin-top: 18px;
 }
+.margin-space-s{
+  margin-left: 10px;
+  padding-right: 10px;
+  margin-top: 10px;
+}
 .margin-l{
   margin-left: 18px;
 }
@@ -140,6 +145,17 @@ ul,li{
   font-size: 16px;
   height: 40px;
   line-height: 40px;
+}
+.title-pannel .title-item{
+  float: left;
+  height: 100%;
+  text-align: center;
+  background-color: #DADADA;
+}
+.current-active{
+  background-color: #ffffff!important;
+  border-bottom: solid 2px #155882;
+  color: #155882;
 }
 .user-pannel{font-size: 16px;color: #666666;margin-top: 10px;margin-left: 2px;margin-bottom: 16px;}
 .user-pannel i{font-style: normal;width: 16px;height: 16px;display: inline-block;}

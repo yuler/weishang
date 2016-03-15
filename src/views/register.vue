@@ -1,5 +1,5 @@
 <template>
-<div class="viewport">
+<div class="viewports">
     <div class="container register-pannel">
         <div class="input-item">
             <input type="tel" maxlength="11" minlength="11" placeholder="请输入您的手机号码" id="phoneNumber" />

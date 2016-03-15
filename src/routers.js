@@ -26,6 +26,15 @@ export default (router) => {
     },
     '/register':{
       component:require('./views/register.vue')
+    },
+    '/orderlist':{
+      component:require('./views/orderlist.vue')
+    },
+    '/userInfo':{
+      component:require('./views/userInfo.vue')
+    },
+    '/getCash':{
+      component:require('./views/getCash.vue')
     }
   })
 }
