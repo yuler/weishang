@@ -1,43 +1,5 @@
-@font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url(/node_modules/material-design-icons/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
-  src: local('Material Icons'),
-       local('MaterialIcons-Regular'),
-       url(/node_modules/material-design-icons/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
-       url(/node_modules/material-design-icons/iconfont/MaterialIcons-Regular.woff) format('woff'),
-       url(/node_modules/material-design-icons/iconfont/MaterialIcons-Regular.ttf) format('truetype');
-}
-*{
-  margin: 0;
-  padding: 0;
-}
-.material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: 'liga';
-}
-
+// init
+html,body{height: 100%;}
 html{background:none repeat scroll 0 0#FFFFFF;color:#000000;}
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
 table{border-collapse:collapse;border-spacing:0;}
@@ -63,6 +25,8 @@ strong{font-weight:bold;}
 input[type="submit"]{cursor:pointer;}
 button{cursor:pointer;}
 
+
+
 .my-user{
   position: absolute;
   right: 10px;
@@ -76,11 +40,6 @@ button{cursor:pointer;}
   max-width: 640px;
   min-width: 320px;
   margin: 0 auto;
-  /* overflow-x: hidden; */
-}
-.container{
-  width: 100%;
-  height: 100%;
   /* overflow-x: hidden; */
 }
 .btn{
@@ -143,3 +102,6 @@ ul,li{
 }
 .user-pannel{font-size: 16px;color: #666666;margin-top: 10px;margin-left: 2px;margin-bottom: 16px;}
 .user-pannel i{font-style: normal;width: 16px;height: 16px;display: inline-block;}
+
+
+

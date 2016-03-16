@@ -1,22 +1,26 @@
-import xhr from 'xhr'
-import { Promise } from 'es6-promise'
-
 import Vue from 'vue'
-// import 
-// 常量
-const HOST = '/vs';
+
+// 分页
+const PAGE_NO = 1
+const PAGE_SIZE = 10
+// 常量 API 接口地址
+const HOST = '/vs'
+// proudctions
 const API_PRODUCT_INDEX_API = `${HOST}/front/product`
 const API_PRODUCT_SHOW_API = `${HOST}/front/product/info`
-const API_USER_PAY_URL = `${HOST}/vs/front/pay/userPay`
-const API_USER_REGISTER_URL = `${HOST}/front/user/register`
+// user
 const API_SEND_SMS_CODE_URL = `${HOST}/front/user/phoneCode`
+const API_USER_REGISTER_URL = `${HOST}/front/user/register`
+const API_USER_LOGIN_URL = `${HOST}/a?login`
 const API_GET_USER_URL = `${HOST}/front/user/info`
+const API_USER_PAY_URL = `${HOST}/vs/front/pay/userPay`
 
+// 设置为请求头为 application/x-www-form-urlencoded
 Vue.http.options.emulateJSON = true
 
 export default {
 	productions: {
-		index: (pageNo = 1, pageSize = 1) => {
+		index: (pageNo = PAGE_NO, pageSize = PAGE_SIZE) => {
 			return Vue.http.get(`${API_PRODUCT_INDEX_API}`, { pageNo: pageNo, pageSize: pageSize })
 		},
 		get: (id) => {
@@ -24,12 +28,9 @@ export default {
   	},
   },
 	pay: {
-		userPay: (out_trade_no) => {
+		userPay: (id) => {
 			return new Promise((resolve, reject) => {
-				xhr(`${API_USER_PAY_URL}?out_trade_no=${out_trade_no}`, (err, res) => {
-					if(err) return reject(err)
-					resolve(JSON.parse(res.body))
-				})
+				return Vue.http.get(`${API_PRODUCT_SHOW_API}`, { out_trade_no: id })
 			})
 		}
 	},
@@ -43,21 +44,11 @@ export default {
 		sendSMSCode: (mobile) => {
 			return Vue.http.get(`${API_SEND_SMS_CODE_URL}`, {mobile: mobile} )
 		},
-		login: () => {
-			return new Promise((resolve, reject) => {
-				xhr(`${userPay}?out_trade_no=${out_trade_no}`, (err, res) => {
-					if(err) return reject(err)
-					resolve(JSON.parse(res.body))
-				})
-			})
+		login: (user) => {
+			return Vue.http.post(`${API_USER_LOGIN_URL}`, user )
 		},
 		info: () => {
-			return new Promise((resolve, reject) => {
-				xhr(`${userPay}?out_trade_no=${out_trade_no}`, (err, res) => {
-					if(err) return reject(err)
-					resolve(JSON.parse(res.body))
-				})
-			})
+			return Vue.http.get(`${API_GET_USER_URL}`)
 		}
 	}
 } 
