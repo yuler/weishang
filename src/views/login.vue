@@ -11,7 +11,7 @@
 			<span><i class="fa fa-key"></i></span>
 			<input v-model="user.password" type="password" placeholder="密码">
 		</div class="form-group">
-		<div class="form-group">
+		<div class="form-group" v-if="user.isValidateCodeLogin">
 			<span><i class="fa fa-code"></i></span>
 			<input v-model="user.validateCode" type="text" placeholder="验证码">
 			<img src="/vs/servlet/validateCodeServlet" alt="验证码" @click="changeVerificationCode">
@@ -23,6 +23,39 @@
 	</form>
 </div>
 </template>
+
+<script>
+import api from '../api.js'
+
+export default {
+	data () {
+		return {
+			user: {
+				username: '17778146915',
+				isValidateCodeLogin: false
+			}
+		}
+	},
+	methods: {
+		login () {
+			api.user.login(this.user)
+				.then( res => {
+					this.user.isValidateCodeLogin = res.data.isValidateCodeLogin
+					if(res.data.code === 1){
+						this.$router.app.showSnackbar('warning', res.data.message)
+					}else if (res.data.code == 2){
+						this.$router.app.showSnackbar('success', '登陆成功')
+					}
+				}, err => {
+					this.$router.app.showSnackbar('error', '服务器异常')
+				})
+		},
+		changeVerificationCode: (e) => {
+			e.target.src += '?' + Date.now()
+		}
+	}
+} 
+</script>
 
 <style lang="stylus" scoped>
 @import "../assets/variables.styl"
@@ -82,29 +115,3 @@ div#login-view
 					outline:none;
 </style>
 
-<script>
-import api from '../api.js'
-
-export default {
-	data () {
-		return {
-			user: {}
-		}
-	},
-	methods: {
-		login () {
-			api.user.login(this.user)
-				.then( res => {
-					if(res.data.message){
-						alert(res.data.message);
-					}
-				}, err => {
-
-				})
-		},
-		changeVerificationCode: (e) => {
-			e.target.src += '?' + Date.now()
-		}
-	}
-} 
-</script>

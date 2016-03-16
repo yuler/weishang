@@ -11,9 +11,9 @@ const API_PRODUCT_SHOW_API = `${HOST}/front/product/info`
 // user
 const API_SEND_SMS_CODE_URL = `${HOST}/front/user/phoneCode`
 const API_USER_REGISTER_URL = `${HOST}/front/user/register`
-const API_USER_LOGIN_URL = `${HOST}/a?login`
+const API_USER_LOGIN_URL = `${HOST}/front/user/login`
 const API_GET_USER_URL = `${HOST}/front/user/info`
-const API_USER_PAY_URL = `${HOST}/vs/front/pay/userPay`
+const API_USER_PAY_URL = `${HOST}/front/pay/userPay`
 
 // 设置为请求头为 application/x-www-form-urlencoded
 Vue.http.options.emulateJSON = true
@@ -29,9 +29,7 @@ export default {
   },
 	pay: {
 		userPay: (id) => {
-			return new Promise((resolve, reject) => {
-				return Vue.http.get(`${API_PRODUCT_SHOW_API}`, { out_trade_no: id })
-			})
+			return Vue.http.get(`${API_PRODUCT_SHOW_API}`, { out_trade_no: id })
 		}
 	},
 	user: {

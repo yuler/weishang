@@ -6,13 +6,64 @@
 				<div>
 					<p>{{p.name}}</p>
 					<p>{{p.summary}}</p>
-					<p>{{p.productType.name}}</p>
+					<p v-if="p.productType">{{p.productType.name}}</p>
 					<p></p>
 				</div>
 				<span>￥{{ p.price }}</span>
 		</li>
 </ul>
 </template>
+
+<script>
+import api from '../api.js'
+
+export default {
+	data () {
+		return {
+			productions: [],
+			pagination: {
+				page: 1,
+				limit: 10
+			},
+			noMoreData: false
+		}
+	},
+	route: {
+		data ({ to }) {
+			return api.productions.index(this.pagination.page, this.pagination.limit)
+				.then(res => {
+					console.log(res);
+					return {
+						productions: res.data.rows,
+					}
+				}, err => {
+					console.log(err);
+					alert('接口错误');
+				})
+		}
+	},
+	methods: {
+		scrollFunc: function (e) {
+			// console.log(e.target.scrollTop, e.target.offsetHeight, e.target.scrollHeight);
+			if (!this.noMoreData && (e.target.scrollTop + e.target.offsetHeight) >= e.target.scrollHeight) {
+				this.pagination.page++
+				console.log(this.pagination.page);
+				api.productions.index(this.pagination.page, this.pagination.limit)
+					.then(res => {
+						if (res.data.rows < this.pagination.limit){
+							this.noMoreData = true
+							return this.$router.app.showSnackbar('warning', '没有数据了')
+						}
+						this.productions = this.productions.concat(res.data.rows);
+					}, err => {
+						console.log(err);
+						alert('接口错误');
+					})
+			}
+		}
+	}
+}
+</script>
 
 <style lang="stylus" scoped>
 ul
@@ -47,51 +98,5 @@ ul
 			width 50px
 			text-align center
 </style>
-
-<script>
-import api from '../api.js'
-
-export default {
-	data () {
-		return {
-			productions: [],
-			pagination: {
-				page: 1,
-				limit: 10
-			}
-		}
-	},
-	route: {
-		data ({ to }) {
-			return api.productions.index(this.pagination.page, this.pagination.limit)
-				.then(res => {
-					console.log(res);
-					return {
-						productions: res.data.rows,
-					}
-				}, err => {
-					console.log(err);
-					alert('接口错误');
-				})
-		}
-	},
-	methods: {
-		scrollFunc: function (e) {
-			// console.log(e.target.scrollTop, e.target.offsetHeight, e.target.scrollHeight);
-			if ((e.target.scrollTop + e.target.offsetHeight) >= e.target.scrollHeight) {
-				this.pagination.page++
-				console.log(this.pagination.page);
-				api.productions.index(this.pagination.page, this.pagination.limit)
-					.then(res => {
-						this.productions = this.productions.concat(res.data.rows);
-					}, err => {
-						console.log(err);
-						alert('接口错误');
-					})
-			}
-		}
-	}
-}
-</script>
 
 
