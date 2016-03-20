@@ -2,7 +2,7 @@
 <header>
 		<a href="javascript:history.go(-1)"><i class="fa fa-3x fa-angle-left"></i></a>
 		<h1>主页</h1>
-		<a v-link="{ name: 'login' }"><i class="fa fa-2x fa-user"></i></a>
+		<a v-link="{ name: 'me' }"><i class="fa fa-2x fa-user"></i></a>
 </header>
 </template>
 

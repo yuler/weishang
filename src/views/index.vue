@@ -55,7 +55,7 @@ export default {
 						this.productions = this.productions.concat(res.data.rows);
 					}, err => {
 						console.log(err);
-						alert('接口错误');
+						// alert('接口错误');
 					})
 			}
 		}

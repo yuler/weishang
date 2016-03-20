@@ -84,14 +84,16 @@ export default {
     Vue.http.interceptors.push({
       request(req){
       		_this.loading = true
-          // console.log('Intercepted REQ:', req)
           return req
       },
       response(res){
-      		setTimeout(function () {
+      		if (res.status === 401) {
+      			_this.$router.go({ name: 'login'})
+      			_this.$router.app.snackbar('warning', '没有登录')
+      		}
+      		// setTimeout(function () {
       			_this.loading = false
-      		}, 500)
-          // console.log('Intercepted RES:', res)
+      		// }, 00)
           return res
       }
     })

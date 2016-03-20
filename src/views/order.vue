@@ -3,27 +3,27 @@
 	<div class="container order-pannel">
 		<div class="floor-item">
 			<ul class="title-pannel">
-				<li class="title-item current-active">求发货</li>
-				<li class="title-item">进行中</li>
-				<li class="title-item">已完成</li>
+				<li class="title-item" v-link="{ name: 'order', replace: true, params: {status: 'wait' }}">求发货</li>
+				<li class="title-item" v-link="{ name: 'order', replace: true,  params: {status: 'processing' }}">进行中</li>
+				<li class="title-item" v-link="{ name: 'order', replace: true,  params: {status: 'completed' }}">已完成</li>
 			</ul>
 		</div>
 		<div class="floor-item">
 			<ul class="order-list">
-				<li class="split-line">
+				<li class="split-line" v-for="order in orders">
 					<div class="order-number">
 						<span>订单编号:</span>
-						<span class="number">123232423534543534</span>
+						<span class="number">{{ order.code }}</span>
 					</div>
-					<div class="order-content margin-space-s" v-order="">
+					<div class="order-content margin-space-s">
 						<span class="order-pic">
 							<img src="/src/assets/i/order-pic.png" />
 						</span>
 						<div class="order-info">
 							<div class="order-name">商品名称</div>
 							<div class="order-attr">红色</div>
-							<div class="order-receiver">王武</div>
-							<div class="order-phone">18739782776</div>
+							<div class="order-receiver">{{ order.reciver }}</div>
+							<div class="order-phone">{{ order.reciverMobile }}</div>
 						</div>
 						<span class="order-num">X1</span>
 					</div>
@@ -44,21 +44,42 @@
 	export default {
 		data () {
 			return {
-				orders: []
+				orders: [],
+				pagination: {
+					page: 1,
+					limit: 10
+				},
 			}
 		},
 		route: {
-			data ({to}) {
-				console.log(to);
-				api.order.wait()
+			data ({ to }) {
+				let status 
+				switch (to.params.status) {
+					case 'wait':
+						status = 1
+						break;
+					case 'processing':
+						status = 2
+						break;
+					case 'completed':
+						status = 3
+						break;
+					default: 
+						status = 1
+				}
+				return api.user.order(this.pagination.page, this.pagination.limit, status)
 					.then( ({data}) => {
 						if( data.success !== true) return this.$router.app.snackbar('warning', data.msg)
-						this.orders = data.rows
+						return {
+							orders: data.rows,
+						}
 					}, err => {
 						this.$router.app.snackbar('error', data.msg)
 					})
 			}
 		}
+
+
 	}
 </script>
 
@@ -144,7 +165,7 @@
    text-align: center;
    background-color: #DADADA;
  }
- .current-active{
+ .v-link-active{
    background-color: #ffffff!important;
    border-bottom: solid 2px #155882;
    color: #155882;

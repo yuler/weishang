@@ -62,19 +62,12 @@ export default {
 		},
 		destroyBank (id) {
 			return Vue.http.post(API_USER_DESTROY_BANK_URL, { id: id})
+		},
+		order (pageNo = PAGE_NO, pageSize = PAGE_SIZE, status = 1) {
+			return Vue.http.post(API_USER_ORDER_URL, { pageNo: pageNo, pageSize: pageSize, status: status })
 		}
 	},
-	order: {
-		wait (pageNo = PAGE_NO, pageSize = PAGE_SIZE) {
-			return Vue.http.post(API_USER_ORDER_URL, { pageNo: pageNo, pageSize: pageSize, status: 1 })
-		},
-		processing (pageNo = PAGE_NO, pageSize = PAGE_SIZE) {
-			return Vue.http.post(API_USER_ORDER_URL, { pageNo: pageNo, pageSize: pageSize, status: 2 })
-		},
-		completed (pageNo = PAGE_NO, pageSize = PAGE_SIZE) {
-			return Vue.http.post(API_USER_ORDER_URL, { pageNo: pageNo, pageSize: pageSize, status: 3 })
-		},
-	}
+	
 } 
 
 

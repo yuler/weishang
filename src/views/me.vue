@@ -26,7 +26,7 @@
 				<div class="box-item ">
 					<span class="cash-tag">未完成订单:</span>
 					<span class="cash-number">3 个</span>
-					<span class="btn btn-info">查看</span>
+					<span class="btn btn-info" v-link="{ name: 'order', replace: true, params: {status: 'wait' }}">查看</span>
 				</div>
 			</div>
 		</div>
@@ -91,7 +91,7 @@ export default {
 				.then( res => {
 					this.user = res.data
 				}, err => {
-					this.$router.app.snackbar('error', '服务器异常')
+					if( res.status !== 401) this.$router.app.snackbar('error', '服务器异常')
 				})
 		},
 		showAddBankFrom () {
@@ -110,7 +110,7 @@ export default {
 					this.init()
 					this.$router.app.snackbar('success', '保存银行卡成功')
 				}, err => {
-					this.$router.app.snackbar('error', '服务器异常')
+					if( res.status !== 401) this.$router.app.snackbar('error', '服务器异常')
 				})
 		},
 		destroyBank (id) {
@@ -120,7 +120,8 @@ export default {
 					this.init()
 					this.$router.app.snackbar('success', '删除银行卡成功')
 				}, err => {
-					this.$router.app.snackbar('error', '服务器异常')
+					console.log(err);
+					if( res.status !== 401) this.$router.app.snackbar('error', '服务器异常')
 				})
 		}
 	}
