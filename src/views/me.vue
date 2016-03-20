@@ -89,9 +89,11 @@ export default {
 		init () {
 			api.user.me()
 				.then( res => {
-					this.user = res.data
+					return {
+						user : res.data
+					}
 				}, err => {
-					if( res.status !== 401) this.$router.app.snackbar('error', '服务器异常')
+					if( err.status !== 401) this.$router.app.snackbar('error', '服务器异常')
 				})
 		},
 		showAddBankFrom () {
@@ -110,7 +112,7 @@ export default {
 					this.init()
 					this.$router.app.snackbar('success', '保存银行卡成功')
 				}, err => {
-					if( res.status !== 401) this.$router.app.snackbar('error', '服务器异常')
+					if( err.status !== 401) this.$router.app.snackbar('error', '服务器异常')
 				})
 		},
 		destroyBank (id) {
@@ -120,8 +122,7 @@ export default {
 					this.init()
 					this.$router.app.snackbar('success', '删除银行卡成功')
 				}, err => {
-					console.log(err);
-					if( res.status !== 401) this.$router.app.snackbar('error', '服务器异常')
+					if( err.status !== 401) this.$router.app.snackbar('error', '服务器异常')
 				})
 		}
 	}
