@@ -42,15 +42,15 @@ button{cursor:pointer;}
   margin: 0 auto;
   /* overflow-x: hidden; */
 }
-.btn{
-  display: inline-block;
-  padding: 0px 10px;
-  background-color: #155882;
-  font-size: 15px;
-  color: #ffffff;
-  border-radius: 5px;
-  text-align: center;
-}
+// .btn{
+//   display: inline-block;
+//   padding: 0px 10px;
+//   background-color: #155882;
+//   font-size: 15px;
+//   color: #ffffff;
+//   border-radius: 5px;
+//   text-align: center;
+// }
 ul,li{
   list-style: none;
 }

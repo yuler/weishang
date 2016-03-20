@@ -28,9 +28,10 @@ export default (router) => {
 			name:'register',
 			component:require('./views/register.vue')
 		},
-		// '/orderlist':{
-		// 	 component:require('./views/orderlist.vue')
-		// },
+		'/order/:status':{
+			name: 'order',
+			component:require('./views/order.vue')
+		},
 		// '/userInfo':{
 		// 	 component:require('./views/userInfo.vue')
 		// },

@@ -41,13 +41,12 @@ export default {
 			api.user.login(this.user)
 				.then( res => {
 					this.user.isValidateCodeLogin = res.data.isValidateCodeLogin
-					if(res.data.code === 1){
-						this.$router.app.showSnackbar('warning', res.data.message)
-					}else if (res.data.code == 2){
-						this.$router.app.showSnackbar('success', '登陆成功')
-					}
+					if(!res.data.success)
+						return this.$router.app.snackbar('error', res.data.msg)
+					this.$router.go({ name: 'me' })
+					this.$router.app.snackbar('success', '登陆成功')
 				}, err => {
-					this.$router.app.showSnackbar('error', '服务器异常')
+					this.$router.app.snackbar('error', '服务器异常')
 				})
 		},
 		changeVerificationCode: (e) => {

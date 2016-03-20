@@ -8,13 +8,14 @@
 			<span><i class="fa fa-spinner fa-spin"></i>&nbsp;&nbsp;加载中...</span>
 		</div>
 	</div>
-	<div class="snackbar snackbar-{{snackbar.type}}" transition="fade" v-show="snackbar.msg" v-text="snackbar.msg"></div>
+	<div class="snackbar snackbar-{{snackbarMsg.type}}" v-if="snackbarMsg" transition="fade" v-text="snackbarMsg.msg"></div>
 </template>
 
 <style lang="stylus" scoped>
 div.container
 	padding-top 44px
-	height: calc(100% - 44px)
+	height 100%
+	overflow auto
 div.mask
 	width 100%
 	height 100%
@@ -39,7 +40,6 @@ div.snackbar
 	bottom: 20px;
 	width: 100%;
 	text-align: center;
-	height: 44px;
 	color: white;
 	line-height: 44px;
 	font-size: 15px;
@@ -51,14 +51,18 @@ div.snackbar-warning
 	background #FFDC00
 
 // transition
-.fade-transition {
-  transition: all .3s ease;
-  overflow: hidden;
+div.snackbar.fade-transition {
+  transition: all 1s ease
   opacity: 1
+  height 44px
 }
-.fade-enter, .fade-leave {
-  height: 0;
-  opacity: 0;
+div.snackbar.fade-enter {
+	opacity 0
+	height 0
+}
+div.snackbar.fade-leave {
+  opacity 0
+  height 0
 }
 </style>
 
@@ -71,7 +75,7 @@ export default {
 	data () {
 		return {
 			loading: false,
-			snackbar: {}
+			snackbarMsg: null
 		}
 	},
   ready () {
@@ -96,12 +100,18 @@ export default {
 		'appbar': Appbar
 	},
 	methods : {
-		showSnackbar (type, msg) {
+		snackbar (type, msg) {
 			var _this = this;
-			_this.snackbar = { 'type': type, 'msg': msg }
+			_this.snackbarMsg = { 'type': type, 'msg': msg }
 			setTimeout(function () {
-				_this.snackbar = { }
+				_this.snackbarMsg = null
 			}, 3000)
+		},
+		showIndicator () {
+			this.loading = true
+		},
+		closeIndicator () {
+			this.loading = false
 		}
 	}
 }

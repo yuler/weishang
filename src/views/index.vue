@@ -1,11 +1,12 @@
 <template>
 <ul class="productions items" id="productions" @scroll="scrollFunc">
 		<li v-for="p in productions" v-link="{ name: 'productionShow', params: { id: p.id }}">
-			<!-- <a > -->
-				<img v-bind:src="p.photoIds | getImagePoster">
-				<div>
+				<div class="poster">
+					<img v-bind:src="p.photoIds | getImagePoster">
+				</div>
+				<div class="content">
 					<p>{{p.name}}</p>
-					<p>{{p.summary}}</p>
+					<p v-html="p.summary"></p>
 					<p v-if="p.productType">{{p.productType.name}}</p>
 					<p></p>
 				</div>
@@ -32,7 +33,6 @@ export default {
 		data ({ to }) {
 			return api.productions.index(this.pagination.page, this.pagination.limit)
 				.then(res => {
-					console.log(res);
 					return {
 						productions: res.data.rows,
 					}
@@ -44,15 +44,13 @@ export default {
 	},
 	methods: {
 		scrollFunc: function (e) {
-			// console.log(e.target.scrollTop, e.target.offsetHeight, e.target.scrollHeight);
 			if (!this.noMoreData && (e.target.scrollTop + e.target.offsetHeight) >= e.target.scrollHeight) {
 				this.pagination.page++
-				console.log(this.pagination.page);
 				api.productions.index(this.pagination.page, this.pagination.limit)
 					.then(res => {
 						if (res.data.rows < this.pagination.limit){
 							this.noMoreData = true
-							return this.$router.app.showSnackbar('warning', '没有数据了')
+							return this.$router.app.snackbar('warning', '没有数据了')
 						}
 						this.productions = this.productions.concat(res.data.rows);
 					}, err => {
@@ -81,12 +79,13 @@ ul
 		display -ms-flex
 		display -o-flex
 		display flex
-		img
-			width 60px
-			height 60px
-		div
+		div.poster img
+				width 60px
+				height 60px
+				border-radius 3px
+		div.content
 			width 100%
-			margin: 0 5px
+			margin: 0 5px 0 10px
 			overflow: hidden;
 			p
 				overflow: hidden;
@@ -94,6 +93,7 @@ ul
 				text-overflow:ellipsis;
 				margin: 0;
 		>span
+			color red
 			line-height 60px
 			width 50px
 			text-align center

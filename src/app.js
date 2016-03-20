@@ -13,11 +13,11 @@ Vue.config.debug = true
 Vue.use(VueRouter)
 Vue.use(VueResource)
 
-
 var router = new VueRouter({
-  // hashbang: true,
-  // history: true,
-  // saveScorllPostion: true,
+  hashbang: false,
+  history: true,
+  saveScrollPosition: true
+  // root: '/home'
 })
 
 routers(router)

@@ -66,7 +66,7 @@ export default {
 			event.stopPropagation()
 		},
 		register: function () {
-			this.$router.app.showSnackbar('success', '注册成功');
+			this.$router.app.snackbar('success', '注册成功');
 			// this.$router.go({name: 'login'})
 			// api.user.regsiter(this.user)
 			// 	.then(res => {
