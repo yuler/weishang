@@ -1,4 +1,4 @@
-// init
+/*init*/
 html{background:none repeat scroll 0 0#FFFFFF;color:#000000;}
 html,body{height: 100%;}
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{margin:0;padding:0;}
@@ -26,14 +26,13 @@ input[type="submit"]{cursor:pointer;}
 button{cursor:pointer;}
 
 
-
 .my-user{
   position: absolute;
   right: 10px;
   top: 10px;
   font-size: 18px;
 }
-.viewport{
+.viewports{
   width: 100%;
   height: 100%;
   font-size: 0px;
@@ -42,15 +41,20 @@ button{cursor:pointer;}
   margin: 0 auto;
   /* overflow-x: hidden; */
 }
-// .btn{
-//   display: inline-block;
-//   padding: 0px 10px;
-//   background-color: #155882;
-//   font-size: 15px;
-//   color: #ffffff;
-//   border-radius: 5px;
-//   text-align: center;
-// }
+.container{
+  width: 100%;
+  height: 100%;
+  /* overflow-x: hidden; */
+}
+.btn{
+  display: inline-block;
+  padding: 0px 10px;
+  background-color: #155882;
+  font-size: 15px;
+  color: #ffffff;
+  border-radius: 5px;
+  text-align: center;
+}
 ul,li{
   list-style: none;
 }
@@ -77,6 +81,11 @@ ul,li{
   padding-bottom: 18px;
   margin-top: 18px;
 }
+.margin-space-s{
+  margin-left: 10px;
+  padding-right: 10px;
+  margin-top: 10px;
+}
 .margin-l{
   margin-left: 18px;
 }
@@ -100,8 +109,16 @@ ul,li{
   height: 40px;
   line-height: 40px;
 }
-.user-pannel{font-size: 16px;color: #666666;margin-top: 10px;margin-left: 2px;margin-bottom: 16px;}
+.title-pannel .title-item{
+  float: left;
+  height: 100%;
+  text-align: center;
+  background-color: #DADADA;
+}
+.current-active{
+  background-color: #ffffff!important;
+  border-bottom: solid 2px #155882;
+  color: #155882;
+}
+.user-pannel{font-size: 16px;color: #666666;margin-top: 10px;margin-left: 2px;}
 .user-pannel i{font-style: normal;width: 16px;height: 16px;display: inline-block;}
-
-
-

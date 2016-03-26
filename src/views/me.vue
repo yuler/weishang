@@ -17,15 +17,15 @@
 			</div>
 		</div>
 		<div class="floor-item floor-space">
-			<div class="detail-box margin-space">
+			<div class="detail-box margin-space-s">
 				<div class="box-item split-line">
 					<span class="cash-tag">账上余额:</span>
 					<span class="cash-number">￥{{ user.balance }}</span>
 					<span class="btn btn-info" v-link="{ name: 'getCash', params: {status: 'apply' }}">提现</span>
 				</div>
-				<div class="box-item ">
+				<div class="box-item split-line">
 					<span class="cash-tag">未完成订单:</span>
-					<span class="cash-number">{{ user.uncompleteCount }}</span>
+					<span class="cash-number">{{ user.uncompleteCount }}个</span>
 					<span class="btn btn-info" v-link="{ name: 'order', params: {status: 'wait' }}">查看</span>
 				</div>
 				<div class="box-item ">
@@ -37,7 +37,7 @@
 			</div>
 		</div>
 		<div class="floor-item">
-			<div class="detail-box margin-space">
+			<div class="detail-box margin-space-s">
 				<div class="box-item split-line">
 					<span class="blank-tag">银行卡信息</span>
 					<span class="add-card" @click="showAddBankFrom">
@@ -55,21 +55,23 @@
 </div>
 <div class="mask" v-show="addBankForm" transition="fade" @click="closeAddBankForm">
 	<form class="buyFrom" @click="stopEvent" transition="fade" @submit.prevent="saveBank">
-		<div>
-			<label for="">银行名称：</label>
-			<input type="text" placeholder="购买数量" v-model="bank.name">
-		</div>
-		<hr>
-		<div>
-			<label for="">银行卡号：</label>
-			<input type="number" placeholder="收货人地址" v-model="bank.cardNum">
-		</div>
-		<hr>
-		<div>
-			<label for="">开户行：</label>
-			<input type="text" placeholder="收货人联系电话" v-model="bank.bankAdd">
-		</div>
-		<hr>
+	<div class="floor-item">
+    	<div class="detail-box margin-space-s">
+          <div class="box-item split-line">
+                      				<label for="">银行名称：</label>
+                                      			<input type="text" placeholder="银行名称" v-model="bank.name">
+                      				</div>
+
+           <div class="box-item split-line">
+           	<label for="">银行卡号：</label>
+            			<input type="number" placeholder="银行卡号" v-model="bank.cardNum">
+           </div>
+           <div class="box-item split-line">
+           <label for="">开户行：</label>
+           			<input type="text" placeholder="开户行" v-model="bank.bankAdd">
+           </div>
+             </div>
+    </div>
 		<button class="btn" type="submit">保存</button>
 	</form>
 </div>
