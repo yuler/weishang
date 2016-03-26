@@ -71,8 +71,8 @@
             			<input type="number" placeholder="银行卡号" v-model="bank.cardNum">
            </div>
            <div class="box-item split-line">
-           <label for="">开户行：</label>
-           			<input type="text" placeholder="开户行" v-model="bank.bankAdd">
+           <label for="">开户银行：</label>
+           			<input type="text" placeholder="开户银行" v-model="bank.bankAdd">
            </div>
              </div>
     </div>
@@ -224,7 +224,9 @@ export default {
 .info-pannel .box-item .btn-info{float: right;padding:4px 15px;}
 .info-pannel .box-item .add-card,.card-remove{float: right;}
 .info-pannel .box-item .bank-name{display: inline-block;width: 75px;}
-
+.mask .floor-item{
+	margin:0;
+}
 div.mask
 	position fixed
 	top 100%
