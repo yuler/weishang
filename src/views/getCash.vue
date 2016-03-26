@@ -3,13 +3,8 @@
 	<div class="container cash-pannel">
 		<div class="floor-item">
 			<ul class="title-pannel">
-<<<<<<< HEAD
-				<li class="cash-item" v-link="{ name: 'getCash', replace: true, params: {status: 'apply' }}">申请提现</li>
-				<li class="cash-item" v-link="{ name: 'getCash', replace: true,  params: {status: 'record' }}">提现记录</li>
-=======
 				<li class="cash-item" v-link="{ name: 'getCash', replace: true, params: { status: 'apply' }}">申请提现</li>
 				<li class="cash-item" v-link="{ name: 'getCash', replace: true,  params: { status: 'record' }}">提现记录</li>
->>>>>>> aea24874e9f3bd5fe65e93cc7ef718e040589643
 			</ul>
 		</div>
 		<div ng-if="!status">
