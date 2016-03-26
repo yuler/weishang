@@ -16,6 +16,10 @@ export default (router) => {
 			name: 'productionShow',
 			component: require('./views/productionShow.vue')
 		},
+		'/edit/': {
+			name: 'editUser',
+			component: require('./views/editUser.vue')
+		},
 		'/success': {
 			name:'success',
 			component:require('./views/authorized-success.vue')

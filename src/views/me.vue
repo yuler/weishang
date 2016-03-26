@@ -71,12 +71,14 @@
             			<input type="number" placeholder="银行卡号" v-model="bank.cardNum">
            </div>
            <div class="box-item split-line">
-           <label for="">开户行：</label>
-           			<input type="text" placeholder="开户行" v-model="bank.bankAdd">
+           <label for="">开户银行：</label>
+           			<input type="text" placeholder="开户银行" v-model="bank.bankAdd">
            </div>
-             </div>
+           <button class="btn" type="submit">保存</button>
+        </div>
+
     </div>
-		<button class="btn" type="submit">保存</button>
+
 	</form>
 </div>
 </template>
@@ -224,7 +226,23 @@ export default {
 .info-pannel .box-item .btn-info{float: right;padding:4px 15px;}
 .info-pannel .box-item .add-card,.card-remove{float: right;}
 .info-pannel .box-item .bank-name{display: inline-block;width: 75px;}
-
+.mask .floor-item{
+	margin:0;
+}
+.mask .floor-item .box-item{
+	padding:6px 0;
+}
+.mask .floor-item .box-item input{
+	    font-size: 14px;
+        display: inline-block;
+        padding: 4px 12px;
+        width: calc(100% - 44px);
+        height: 40px;
+        border-radius:4px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        width:100%;
+}
 div.mask
 	position fixed
 	top 100%

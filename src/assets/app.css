@@ -122,3 +122,12 @@ ul,li{
 }
 .user-pannel{font-size: 16px;color: #666666;margin-top: 10px;margin-left: 2px;}
 .user-pannel i{font-style: normal;width: 16px;height: 16px;display: inline-block;}
+.full-btn{
+  color: #fff;
+  height: 44px;
+  width: 100%;
+  font-size: 14px;
+  border: 1px solid #155882;
+  border-radius: 4px;
+  background: #155882;
+}
