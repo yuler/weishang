@@ -37,7 +37,7 @@ export default (router) => {
 			name: 'order',
 			component:require('./views/order.vue')
 		},
-		// apply 
+		// apply record
 		'/getCash/:status': {
 			name: 'getCash',
 			component:require('./views/getCash.vue')

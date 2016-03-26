@@ -3,51 +3,61 @@
 	<div class="container cash-pannel">
 		<div class="floor-item">
 			<ul class="title-pannel">
+<<<<<<< HEAD
 				<li class="cash-item" v-link="{ name: 'getCash', replace: true, params: {status: 'apply' }}">申请提现</li>
 				<li class="cash-item" v-link="{ name: 'getCash', replace: true,  params: {status: 'record' }}">提现记录</li>
+=======
+				<li class="cash-item" v-link="{ name: 'getCash', replace: true, params: { status: 'apply' }}">申请提现</li>
+				<li class="cash-item" v-link="{ name: 'getCash', replace: true,  params: { status: 'record' }}">提现记录</li>
+>>>>>>> aea24874e9f3bd5fe65e93cc7ef718e040589643
 			</ul>
 		</div>
-		<div class="floor-item">
-			<div class=" margin-space">
-			<div class="user-pannel "><i class="fa fa-user"></i><span class="user-name">{{ user.name}}</span></div>
-				<div class="account-info">
-					<i class="fa fa-money"></i>
-					<span class="account-tag">账户余额</span>
-					<span class="account-number">￥{{ user.balance}}</span>
-				</div>
-			</div>
-		</div>
-		<div class="floor-item">
-			<div class="bank-info">
-				<div class="bank-item" v-for="bank in user.banks" @click="chooseBankCard">
-					<div class="bank-account">
-						<span class="bank-name">{{ bank.name }}</span>
-						<span class="bank-number">{{ bank.cardNum }}</span>
-						<span class="bank-control"><i class="btn-choose choosed"></i></span>
-					</div>
-					<div class="bank-userinfo margin-l">
-						<div class="user-name">
-							<span>姓名:</span>
-							<span>{{ user.name }}</span>
-						</div>
-						<div class="user-mobile">
-							<span>手机号:</span>
-							<span>{{ user.mobile }}</span>
-						</div>
-						<div class="bank-addr">
-							<span>开户行:</span>
-							<span>{{ bank.bankAdd }}</span>
-						</div>
+		<div ng-if="!status">
+			<div class="floor-item">
+				<div class=" margin-space">
+				<div class="user-pannel "><i class="fa fa-user"></i><span class="user-name">{{ user.name}}</span></div>
+					<div class="account-info">
+						<i class="fa fa-money"></i>
+						<span class="account-tag">账户余额</span>
+						<span class="account-number">￥{{ user.balance}}</span>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class='floor-item' style="height:60px;"></div>
-		<div class="floor-item cash-bar split-line-up">
-			<div class="bar-pannel">
-				<input type="number" placeholder="输入提现金额"  class="cash-input" />
-				<span class="btn cash-btn" id="getCode">确定</span>
+			<div class="floor-item">
+				<div class="bank-info">
+					<div class="bank-item" v-for="bank in user.banks">
+						<div class="bank-account">
+							<span class="bank-name">{{ bank.name }}</span>
+							<span class="bank-number">{{ bank.cardNum }}</span>
+							<input class="bank-control" type="radio" name="bankCard" @click="chooseBankCard(bank)">
+						</div>
+						<div class="bank-userinfo margin-l">
+							<div class="user-name">
+								<span>姓名:</span>
+								<span>{{ user.name }}</span>
+							</div>
+							<div class="user-mobile">
+								<span>手机号:</span>
+								<span>{{ user.mobile }}</span>
+							</div>
+							<div class="bank-addr">
+								<span>开户行:</span>
+								<span>{{ bank.bankAdd }}</span>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
+			<div class='floor-item' style="height:60px;"></div>
+			<div class="floor-item cash-bar split-line-up">
+				<div class="bar-pannel">
+					<input type="number" placeholder="输入提现金额"  class="cash-input" />
+					<span class="btn cash-btn" id="getCode" @click="withdrawCash">确定</span>
+				</div>
+			</div>
+		</div>
+		<div ng-else>
+			111
 		</div>
 	</div>
 </div>
@@ -60,10 +70,14 @@ export default {
 	data () {
 		return {
 			user: {},
+			bankCard: null,
+			withdraw: {},
+			status: true
 		}
 	},
 	route: {
-		data () {
+		data ({to: {params}}) {
+			// this.status = params.status == 'apply'
 			api.user.me()
 				.then( res => {
 					this.user = res.data
@@ -73,7 +87,27 @@ export default {
 		}
 	},
 	methods: {
-		
+		chooseBankCard (bank) {
+			this.bankCard = bank
+		},
+		withdrawCash () {
+			if(!this.bankCard)
+				return this.$router.app.snackbar('warning', '请选择银行卡')
+			if(!this.withdraw.price)
+				return this.$router.app.snackbar('warning', '请选择金额')
+			this.withdraw.bankName = this.bankCard.name
+			this.withdraw.bankCode = this.bankCard.cardNum
+			this.withdraw.recivName = this.user.name
+			this.withdraw.bankAdd = this.bankCard.bankAdd
+			api.user.withdrawCash(this.withdraw)
+				.then( res => {
+					if( res.data.success !== true)
+						return this.$router.app.snackbar('warning', res.data.msg)
+					this.$router.go({ name: 'getCash', replace: true, params: {status: 'record'} })
+				}, err => {
+					if( err.status !== 401) this.$router.app.snackbar('error', '服务器异常')
+				})
+		}
 	}
 }
 </script>
@@ -129,7 +163,7 @@ export default {
 }
 .cash-pannel .bank-account .bank-control{
 	float: right;
-	margin-right: 18px;
+	margin:15px 10px;
 }
 .cash-pannel .bank-userinfo{
 	/* margin-top: 5px; */
