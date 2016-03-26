@@ -22,6 +22,7 @@ const API_USER_DESTROY_BANK_URL = `${HOST}/front/bank/delete`
 
 const API_USER_ORDER_URL = `${HOST}/front/order`
 
+const API_GET_WITHDRAW_URL = `${HOST}/front/withdraw/save`
 // 设置为请求头为 application/x-www-form-urlencoded
 Vue.http.options.emulateJSON = true
 
@@ -69,6 +70,9 @@ export default {
 		},
 		order (pageNo = PAGE_NO, pageSize = PAGE_SIZE, status = 1) {
 			return Vue.http.post(API_USER_ORDER_URL, { pageNo: pageNo, pageSize: pageSize, status: status })
+		},
+		withdrawCash (bankCard) {
+			return Vue.http.post(API_GET_WITHDRAW_URL, bankCard)
 		}
 	},
 	

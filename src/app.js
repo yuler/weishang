@@ -18,7 +18,7 @@ var router = new VueRouter({
   hashbang: false,
   history: true,
   saveScrollPosition: true
-  // root: '/home'
+  // root: '/vs/dist'
 })
 
 routers(router)

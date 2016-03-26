@@ -175,7 +175,6 @@ export default {
 						amount: res.data.amount,
 						sign: res.data.sign,
 						return_url: return_url,
-						debug: true,
 						optional: {
 							type:'USER_PAY',
 							out_trade_no:res.data.out_trade_no
