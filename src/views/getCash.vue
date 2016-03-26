@@ -7,7 +7,7 @@
 				<li class="cash-item" v-link="{ name: 'getCash', replace: true,  params: { status: 'record' }}">提现记录</li>
 			</ul>
 		</div>
-		<div ng-if="!status">
+		<div v-if="status == 'apply'">
 			<div class="floor-item">
 				<div class=" margin-space">
 				<div class="user-pannel "><i class="fa fa-user"></i><span class="user-name">{{ user.name}}</span></div>
@@ -51,8 +51,27 @@
 				</div>
 			</div>
 		</div>
-		<div ng-else>
-			111
+		<div v-else>
+			<div class="bank-info">
+				<div class="bank-item" v-for="record in withdrawRecord">
+					<div class="bank-account">
+						<span class="bank-name">{{ record.bankName }}</span>
+						<span class="bank-number">{{ record.createDate }}</span>
+						<span class="bank-control" style="line-height:12px;">￥{{ record.price }}</span>
+					</div>
+					<div class="bank-userinfo margin-l">
+						<div class="user-name">
+							<span>姓名:</span>
+							<span>{{ record.recivName }}</span>
+						</div>
+						<div class="bank-addr">
+							<span>银行卡号:</span>
+							<span>{{ record.bankCode }}</span>
+						</div>
+					</div>
+					<hr>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
@@ -67,18 +86,28 @@ export default {
 			user: {},
 			bankCard: null,
 			withdraw: {},
-			status: true
+			status: 'apply',
+			withdrawRecord: []
 		}
 	},
 	route: {
 		data ({to: {params}}) {
-			// this.status = params.status == 'apply'
-			api.user.me()
-				.then( res => {
-					this.user = res.data
-				}, err => {
-					if( err.status !== 401) this.$router.app.snackbar('error', '服务器异常')
-				})
+			this.status = params.status
+			if(this.status === 'apply') {
+				api.user.me()
+					.then( res => {
+						this.user = res.data
+					}, err => {
+						if( err.status !== 401) this.$router.app.snackbar('error', '服务器异常')
+					})
+			} else if (this.status === 'record'){
+				api.user.getWithdraw()
+					.then( res => {
+						this.withdrawRecord = res.data.list
+					}, err => {
+						if( err.status !== 401) this.$router.app.snackbar('error', '服务器异常')
+					})
+			}
 		}
 	},
 	methods: {
