@@ -4,20 +4,25 @@
 		<div class="floor-item split-line">
 			<div class="user-info margin-space">
 				<span class="user-pic">
-					<!-- <img src="src/assets/i/user-pic.png"> -->
+					<img v-bind:src="user.photo | getImagePoster">
 				</span>
 				<span class="info-text">
-					<div class="user-address">北京市朝阳区山博水攻D503北京市朝阳区山博水攻D503</div>
+					<div class="user-address"><i class="fa fa-map-marker"></i>{{user.address}}</div>
 					<div class="user-phone">
-						<i class="icon phone"></i><span class="phone">{{user.mobile}}</span>
+						<span class="phone"><i class="fa fa-mobile"></i> {{user.mobile}}</span>
 					</div>
 				</span>
 				<div class="user-pannel"><i class="icon user"></i><span class="user-name">{{user.loginName}}</span></div>
-				<div class="control-pannel"><i class="icon settings"></i> <span>编辑</span></div>
+				<div class="control-pannel"><i class="icon settings"></i> <span @click="logout">编辑</span></div>
 			</div>
 		</div>
 		<div class="floor-item floor-space">
 			<div class="detail-box margin-space-s">
+				<div class="box-item split-line">
+					<span class="cash-tag">认证状态:</span>
+					<span class="cash-number">{{ user.valid | userStatus }}</span>
+					<span class="btn btn-info" @click="payAuth" v-if="user.valid === 0">认证</span>
+				</div>
 				<div class="box-item split-line">
 					<span class="cash-tag">账上余额:</span>
 					<span class="cash-number">￥{{ user.balance }}</span>
@@ -30,7 +35,6 @@
 				</div>
 				<div class="box-item ">
 					<span class="cash-tag">推荐注册地址:</span>
-					<!-- <span class="cash-number">{{ user.uncompleteCount }}</span> -->
 					<input id="shareUrl" type="text" value="{{ shareRegisterUrl }}">
 					<span class="btn btn-info" @click="copyShareUrl">复制</span>
 				</div>
@@ -101,10 +105,9 @@ export default {
 	computed: {
 		shareRegisterUrl () {
 			var host = window.location.host
-			var hash = window.location.hash
 			var pathname = window.location.pathname
 			var userId = this.user.id
-      return `http://${host}/#!${pathname}register/${userId}`
+      return `http://${host}${pathname}#!/register/${userId}`
     }
 	},
 	methods: {
@@ -158,6 +161,44 @@ export default {
 			} catch (e) {
 				this.$router.app.snackbar('error', '复制失败')
 			}
+		},
+		payAuth () {
+			var host = window.location.host
+			var pathname = window.location.pathname
+			var return_url = `http://${host}${pathname}#!/me`
+			api.pay.userPay()
+				.then(res => {
+					BC.click({
+						out_trade_no: res.data.out_trade_no,
+						title: res.data.title,
+						amount: res.data.amount,
+						sign: res.data.sign,
+						return_url: return_url,
+						debug: true,
+						optional: {
+							type:'USER_PAY',
+							out_trade_no:res.data.out_trade_no
+						},
+						instant_channel:"ali",
+						need_ali_guide:"true"
+					}, {
+						dataError:function(msg){
+							console.log(msg);
+						},wxJsapiFinish:function(msg){
+							alert(msg);
+						},wxJsapiSuccess:function(msg){
+							alert(msg);
+						},wxJsapiFail:function(msg){
+							alert(msg);
+						}
+					});
+				})
+		},
+		logout () {
+			api.user.logout()
+				.then( res => {
+
+				})
 		}
 	}
 }

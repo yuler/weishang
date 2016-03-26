@@ -12,6 +12,7 @@ const API_PRODUCT_SHOW_API = `${HOST}/front/product/info`
 const API_SEND_SMS_CODE_URL = `${HOST}/front/user/phoneCode`
 const API_USER_REGISTER_URL = `${HOST}/front/user/register`
 const API_USER_LOGIN_URL = `${HOST}/front/user/login`
+const API_USER_LOGOUT_URL = `${HOST}/front/user/logout`
 const API_GET_USER_URL = `${HOST}/front/user/info`
 const API_USER_AUTH_PAY_URL = `${HOST}/front/pay/userPay`
 const API_USER_ORDER_PAY_URL = `${HOST}/front/pay/orderPay`
@@ -35,7 +36,7 @@ export default {
   },
 	pay: {
 		userPay (id) {
-			return Vue.http.get(API_PRODUCT_SHOW_API, { out_trade_no: id })
+			return Vue.http.get(API_USER_AUTH_PAY_URL, { out_trade_no: id })
 		},
 		orderPay (order) {
 			return Vue.http.post(API_USER_ORDER_PAY_URL, order)
@@ -53,6 +54,9 @@ export default {
 		},
 		login (user) {
 			return Vue.http.post(API_USER_LOGIN_URL, user )
+		},
+		logout () {
+			return Vue.http.get(API_USER_LOGOUT_URL)
 		},
 		me () {
 			return Vue.http.get(API_GET_USER_URL)
