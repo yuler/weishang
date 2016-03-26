@@ -4,7 +4,7 @@
 		<div class="floor-item">
 			<ul class="title-pannel">
 				<li class="cash-item" v-link="{ name: 'getCash', replace: true, params: {status: 'apply' }}">申请提现</li>
-				<li class="cash-item" v-link="{ name: 'getCash', replace: true,  params: {status: 'record' }}">提货记录</li>
+				<li class="cash-item" v-link="{ name: 'getCash', replace: true,  params: {status: 'record' }}">提现记录</li>
 			</ul>
 		</div>
 		<div class="floor-item">
