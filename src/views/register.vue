@@ -12,6 +12,10 @@
 			<a class="send-sms-btn" @click="sendSMSVerify">获取验证码</a>
 		</div>
 		<div class="form-group">
+			<span><i class="fa fa-user"></i></span>
+			<input v-model="user.name" type="text" placeholder="姓名">
+		</div>
+		<div class="form-group">
 			<span><i class="fa fa-key"></i></span>
 			<input v-model="user.password" type="password" placeholder="密码">
 		</div class="form-group">

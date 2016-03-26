@@ -9,59 +9,36 @@
 		</div>
 		<div class="floor-item">
 			<div class=" margin-space">
-			<div class="user-pannel "><i class="icon user"></i><span class="user-name">用户名</span></div>
-						<div class="account-info">
-							<span class="account-tag">账户余额</span>
-							<span class="account-number">￥2456.5</span>
-						</div>
+			<div class="user-pannel "><i class="fa fa-user"></i><span class="user-name">{{ user.name}}</span></div>
+				<div class="account-info">
+					<i class="fa fa-money"></i>
+					<span class="account-tag">账户余额</span>
+					<span class="account-number">￥{{ user.balance}}</span>
+				</div>
 			</div>
-
 		</div>
 		<div class="floor-item">
 			<div class="bank-info">
-				<div class="bank-item">
+				<div class="bank-item" v-for="bank in user.banks" @click="chooseBankCard">
 					<div class="bank-account">
-						<span class="bank-name">工商银行</span>
-						<span class="bank-number">6228481125332650763</span>
+						<span class="bank-name">{{ bank.name }}</span>
+						<span class="bank-number">{{ bank.cardNum }}</span>
 						<span class="bank-control"><i class="btn-choose choosed"></i></span>
 					</div>
 					<div class="bank-userinfo margin-l">
 						<div class="user-name">
 							<span>姓名:</span>
-							<span>李老大</span>
+							<span>{{ user.name }}</span>
 						</div>
 						<div class="user-mobile">
 							<span>手机号:</span>
-							<span>18719312881</span>
+							<span>{{ user.mobile }}</span>
 						</div>
 						<div class="bank-addr">
 							<span>开户行:</span>
-							<span>北京某条大家支行</span>
+							<span>{{ bank.bankAdd }}</span>
 						</div>
 					</div>
-
-				</div>
-				<div class="bank-item">
-					<div class="bank-account">
-						<span class="bank-name">工商银行</span>
-						<span class="bank-number">6228481125332650763</span>
-						<span class="bank-control"><i class="btn-choose"></i></span>
-					</div>
-					<div class="bank-userinfo margin-l">
-						<div class="user-name">
-							<span>姓名:</span>
-							<span>李老大</span>
-						</div>
-						<div class="user-mobile">
-							<span>手机号:</span>
-							<span>18719312881</span>
-						</div>
-						<div class="bank-addr">
-							<span>开户行:</span>
-							<span>北京某条大家支行</span>
-						</div>
-					</div>
-
 				</div>
 			</div>
 		</div>
@@ -71,12 +48,35 @@
 				<input type="number" placeholder="输入提现金额"  class="cash-input" />
 				<span class="btn cash-btn" id="getCode">确定</span>
 			</div>
-
-
 		</div>
 	</div>
 </div>
 </template>
+
+<script>
+import api from '../api.js'
+
+export default {
+	data () {
+		return {
+			user: {},
+		}
+	},
+	route: {
+		data () {
+			api.user.me()
+				.then( res => {
+					this.user = res.data
+				}, err => {
+					if( err.status !== 401) this.$router.app.snackbar('error', '服务器异常')
+				})
+		}
+	},
+	methods: {
+		
+	}
+}
+</script>
 
 <style scoped>
 .cash-pannel .v-link-active{

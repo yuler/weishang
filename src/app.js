@@ -4,13 +4,11 @@ import VueResource from 'vue-resource'
 
 import App from './app.vue'
 import routers from './routers.js'
+import * as filters from './filters'
 
-Vue.filter('getImagePoster', function (string) {
-	return string ? 'http://123.56.235.156/' + string.split('|')[1] : ''
-})
-Vue.filter('orderStatus', function (string) {
-	return string ? 'http://123.56.235.156/' + string.split('|')[1] : ''
-})
+Object.keys(filters).forEach(function(k) {
+  Vue.filter(k, filters[k]);
+});
 
 Vue.config.debug = true
 Vue.use(VueRouter)

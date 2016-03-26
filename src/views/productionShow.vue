@@ -73,6 +73,9 @@ export default {
 			this.order['products[0].id'] = this.production.id;
 			api.pay.orderPay(this.order)
 				.then(res => {
+					var host = window.location.host
+					var pathname = window.location.pathname
+					var return_url = `http://${host}${pathname}#!/order/wait`
 					if( res.data.success === false) return this.$router.app.snackbar('warning', res.data.msg)
 					this.$router.app.showIndicator();
 					BC.click({
@@ -80,8 +83,8 @@ export default {
 						title: res.data.title,
 						amount: res.data.amount,
 						sign: res.data.sign,
-						return_url:"http://www.baidu.com",
-						optional:{
+						return_url: return_url,
+						optional: {
 							type: res.data.pay_type,
 							out_trade_no:res.data.out_trade_no,
 							order_id: res.data.order_id
@@ -102,34 +105,6 @@ export default {
 				}, err => {
 					console.log(err);
 				})
-			// api.pay.userPay('7f9a2222627343dc8217ee4aed392a2a')
-			// 	.then(res => {
-			// 		BC.click({
-			// 			out_trade_no: res.out_trade_no,
-			// 			title: res.title,
-			// 			amount: res.amount,
-			// 			sign: res.sign,
-			// 			return_url:"http://www.baidu.com",
-			// 			debug:true,
-			// 			optional:{
-			// 				type:'USER_PAY',
-			// 				out_trade_no:res.out_trade_no
-			// 			},
-			// 			instant_channel:"ali",
-			// 			need_ali_guide:"true"
-						
-			// 		}, {
-			// 			dataError:function(msg){
-			// 				console.log(msg);
-			// 			},wxJsapiFinish:function(msg){
-			// 				alert(msg);
-			// 			},wxJsapiSuccess:function(msg){
-			// 				alert(msg);
-			// 			},wxJsapiFail:function(msg){
-			// 				alert(msg);
-			// 			}
-			// 		});
-			// 	})
 		},
 		closeForm () {
 			this.state.pay = false
