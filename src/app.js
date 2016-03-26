@@ -15,8 +15,8 @@ Vue.use(VueRouter)
 Vue.use(VueResource)
 
 var router = new VueRouter({
-  // hashbang: false,
-  // history: true,
+  hashbang: false,
+  history: true,
   saveScrollPosition: true
   // root: '/home'
 })
