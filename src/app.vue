@@ -88,7 +88,7 @@ export default {
       },
       response(res){
       		if (res.status === 401) {
-      			_this.$router.go({ name: 'login'})
+      			_this.$router.go({ name: 'login', replace: true })
       			_this.$router.app.snackbar('warning', '没有登录')
       		}
       		// setTimeout(function () {

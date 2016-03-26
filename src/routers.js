@@ -16,28 +16,28 @@ export default (router) => {
 			name: 'productionShow',
 			component: require('./views/productionShow.vue')
 		},
-		'/success':{
+		'/success': {
 			name:'success',
 			component:require('./views/authorized-success.vue')
 		},
-		'/success1':{
+		'/success1': {
 			name:'success',
 			component:require('./views/register-success.vue')
 		},
-		'/register/:userId':{
+		'/register/:userId': {
 			name:'register',
 			component:require('./views/register.vue')
 		},
-		'/order/:status':{
+		// wait processing completed
+		'/order/:status': {
 			name: 'order',
 			component:require('./views/order.vue')
 		},
-		// '/userInfo':{
-		// 	 component:require('./views/userInfo.vue')
-		// },
-		// '/getCash':{
-		// 	 component:require('./views/getCash.vue')
-		// },
+		// apply 
+		'/getCash/:status': {
+			name: 'getCash',
+			component:require('./views/getCash.vue')
+		},
 		'*': {
 			component: require('./views/404.vue')			
 		}

@@ -11,12 +11,6 @@ config.devtool = 'eval';
 var proxy = {
   "/vs/*": {target: "http://123.56.235.156", host: "123.56.235.156"},
 };
-// if (process.env.NODE_ENV === 'local') {
-//   proxy = {
-//     "/api/*": "http://192.168.30.12:5000",
-//     "/session*": "http://192.168.30.12:5000",
-//   };
-// }
 
 var app = new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,

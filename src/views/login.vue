@@ -31,7 +31,7 @@ export default {
 	data () {
 		return {
 			user: {
-				username: '17778146915',
+				username: '',
 				isValidateCodeLogin: false
 			}
 		}
@@ -43,7 +43,7 @@ export default {
 					this.user.isValidateCodeLogin = res.data.isValidateCodeLogin
 					if(!res.data.success)
 						return this.$router.app.snackbar('error', res.data.msg)
-					this.$router.go({ name: 'me' })
+					this.$router.go({ name: 'me', repleace: true })
 					this.$router.app.snackbar('success', '登陆成功')
 				}, err => {
 					this.$router.app.snackbar('error', '服务器异常')

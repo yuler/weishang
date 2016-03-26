@@ -4,7 +4,7 @@
 		<div class="floor-item split-line">
 			<div class="user-info margin-space">
 				<span class="user-pic">
-					<img src="/src/assets/i/user-pic.png">
+					<!-- <img src="src/assets/i/user-pic.png"> -->
 				</span>
 				<span class="info-text">
 					<div class="user-address">北京市朝阳区山博水攻D503北京市朝阳区山博水攻D503</div>
@@ -21,12 +21,18 @@
 				<div class="box-item split-line">
 					<span class="cash-tag">账上余额:</span>
 					<span class="cash-number">￥1532</span>
-					<span class="btn btn-info">提现</span>
+					<span class="btn btn-info" v-link="{ name: 'getCash', params: {status: 'apply' }}">提现</span>
 				</div>
 				<div class="box-item ">
 					<span class="cash-tag">未完成订单:</span>
-					<span class="cash-number">3 个</span>
-					<span class="btn btn-info" v-link="{ name: 'order', replace: true, params: {status: 'wait' }}">查看</span>
+					<span class="cash-number">{{ user.uncompleteCount }}</span>
+					<span class="btn btn-info" v-link="{ name: 'order', params: {status: 'wait' }}">查看</span>
+				</div>
+				<div class="box-item ">
+					<span class="cash-tag">推荐注册地址:</span>
+					<!-- <span class="cash-number">{{ user.uncompleteCount }}</span> -->
+					<input id="shareUrl" type="text" value="{{ shareRegisterUrl }}">
+					<span class="btn btn-info" @click="copyShareUrl">复制</span>
 				</div>
 			</div>
 		</div>
@@ -82,16 +88,28 @@ export default {
 	},
 	route: {
 		data () {
-			this.init()
+			api.user.me()
+				.then( res => {
+					this.user = res.data
+				}, err => {
+					if( err.status !== 401) this.$router.app.snackbar('error', '服务器异常')
+				})
 		}
+	},
+	computed: {
+		shareRegisterUrl () {
+			var host = window.location.host
+			var hash = window.location.hash
+			var userId = this.user.id
+      return `http://${host}${hash}/regster/${userId}`
+    }
 	},
 	methods: {
 		init () {
+			console.log('init');
 			api.user.me()
 				.then( res => {
-					return {
-						user : res.data
-					}
+					this.user = res.data
 				}, err => {
 					if( err.status !== 401) this.$router.app.snackbar('error', '服务器异常')
 				})
@@ -110,6 +128,7 @@ export default {
 				.then( res => {
 					if( res.data.success !== true) return this.$router.app.snackbar('warning', res.data.msg)
 					this.init()
+					this.addBankForm = false
 					this.$router.app.snackbar('success', '保存银行卡成功')
 				}, err => {
 					if( err.status !== 401) this.$router.app.snackbar('error', '服务器异常')
@@ -120,10 +139,22 @@ export default {
 				.then( res => {
 					if( res.data.success !== true) return this.$router.app.snackbar('warning', res.data.msg)
 					this.init()
+					this.addBankForm = false
 					this.$router.app.snackbar('success', '删除银行卡成功')
 				}, err => {
 					if( err.status !== 401) this.$router.app.snackbar('error', '服务器异常')
 				})
+		},
+		copyShareUrl () {
+			try {
+			  var el = document.getElementById('shareUrl')
+			  el.select()
+			  var successful = document.execCommand('copy')
+			  if (successful)
+			  	this.$router.app.snackbar('success', '复制成功')
+			} catch (e) {
+				this.$router.app.snackbar('error', '复制失败')
+			}
 		}
 	}
 }

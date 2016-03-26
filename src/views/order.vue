@@ -83,7 +83,7 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	.order-pannel{
 		font-size:16px
 	}

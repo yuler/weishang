@@ -6,7 +6,7 @@ import App from './app.vue'
 import routers from './routers.js'
 
 Vue.filter('getImagePoster', function (string) {
-	return string ? 'http://123.56.235.156/' + string.split('|')[1] : '';
+	return string ? 'http://123.56.235.156/' + string.split('|')[1] : ''
 })
 
 Vue.config.debug = true
@@ -14,8 +14,8 @@ Vue.use(VueRouter)
 Vue.use(VueResource)
 
 var router = new VueRouter({
-  hashbang: false,
-  history: true,
+  // hashbang: false,
+  // history: true,
   saveScrollPosition: true
   // root: '/home'
 })
