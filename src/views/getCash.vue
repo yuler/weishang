@@ -42,7 +42,7 @@
 				</div>
 			</div>
 		</div>
-
+		<div class='floor-item' style="height:60px;"></div>
 		<div class="floor-item cash-bar split-line-up">
 			<div class="bar-pannel">
 				<input type="number" placeholder="输入提现金额"  class="cash-input" />
