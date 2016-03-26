@@ -107,7 +107,7 @@ export default {
 			var host = window.location.host
 			var pathname = window.location.pathname
 			var userId = this.user.id
-      return `http://${host}${pathname}#!/register/${userId}`
+      return `http://${host}${pathname}/register/${userId}`
     }
 	},
 	methods: {
@@ -165,7 +165,8 @@ export default {
 		payAuth () {
 			var host = window.location.host
 			var pathname = window.location.pathname
-			var return_url = `http://${host}${pathname}#!/me`
+			var return_url = `http://${host}${pathname}/me`
+			console.log(return_url);
 			api.pay.userPay()
 				.then(res => {
 					BC.click({
