@@ -12,10 +12,6 @@ export default (router) => {
 			name: 'me',
 			component: require('./views/me.vue')
 		},
-		'/me_t': {
-			name: 'me_t',
-			component: require('./views/me_temp.vue')
-		},
 		'/p/:id': {
 			name: 'productionShow',
 			component: require('./views/productionShow.vue')
