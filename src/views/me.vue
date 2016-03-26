@@ -20,7 +20,7 @@
 			<div class="detail-box margin-space">
 				<div class="box-item split-line">
 					<span class="cash-tag">账上余额:</span>
-					<span class="cash-number">￥1532</span>
+					<span class="cash-number">￥{{ user.balance }}</span>
 					<span class="btn btn-info" v-link="{ name: 'getCash', params: {status: 'apply' }}">提现</span>
 				</div>
 				<div class="box-item ">
@@ -100,8 +100,9 @@ export default {
 		shareRegisterUrl () {
 			var host = window.location.host
 			var hash = window.location.hash
+			var pathname = window.location.pathname
 			var userId = this.user.id
-      return `http://${host}${hash}/regster/${userId}`
+      return `http://${host}/#!${pathname}register/${userId}`
     }
 	},
 	methods: {

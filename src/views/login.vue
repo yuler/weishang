@@ -43,7 +43,7 @@ export default {
 					this.user.isValidateCodeLogin = res.data.isValidateCodeLogin
 					if(!res.data.success)
 						return this.$router.app.snackbar('error', res.data.msg)
-					this.$router.go({ name: 'me', repleace: true })
+					this.$router.go({ name: 'me', replace: true })
 					this.$router.app.snackbar('success', '登陆成功')
 				}, err => {
 					this.$router.app.snackbar('error', '服务器异常')

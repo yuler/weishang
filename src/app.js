@@ -8,6 +8,9 @@ import routers from './routers.js'
 Vue.filter('getImagePoster', function (string) {
 	return string ? 'http://123.56.235.156/' + string.split('|')[1] : ''
 })
+Vue.filter('orderStatus', function (string) {
+	return string ? 'http://123.56.235.156/' + string.split('|')[1] : ''
+})
 
 Vue.config.debug = true
 Vue.use(VueRouter)

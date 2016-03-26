@@ -28,8 +28,8 @@
 						<span class="order-num">X1</span>
 					</div>
 					<div class="order-sp">
-						<span class="order-status">未发货</span>
-						<span class="order-price">￥36.5</span>
+						<span class="order-status">{{ order.status }}</span>
+						<span class="order-price">￥{{ order.price }}</span>
 					</div>
 				</li>
 			</ul>

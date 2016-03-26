@@ -6,7 +6,7 @@ var projectRoot = path.resolve(__dirname, '../')
 var pkg = require(projectRoot + '/package.json')
 var vendor = Object.keys(pkg.dependencies)
 
-var publicPath = '/static/'
+var publicPath = 'static/'
 var distPath = 'dist/static/'
 
 module.exports = {

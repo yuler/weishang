@@ -33,24 +33,13 @@ export default {
 	data () {
 		return {
 			user: {
-				mobile: '17778146915'
+				mobile: ''
 			},
 		}
 	},
 	route: {
 		data ({ to }) {
 			this.user.tjr = this.$route.params.userId;
-			// console.log(this.$route);
-			// return api.user.get(this.user.tjr)
-			//     .then(res => {
-			//         console.log(res);
-			//         return {
-			//             productions: res.rows,
-			//         }
-			//     }, err => {
-			//         console.log(err);
-			//         alert('接口错误');
-			//     })
 		}
 	},
 	methods: {
@@ -66,18 +55,15 @@ export default {
 			event.stopPropagation()
 		},
 		register: function () {
-			this.$router.app.snackbar('success', '注册成功');
-			// this.$router.go({name: 'login'})
-			// api.user.regsiter(this.user)
-			// 	.then(res => {
-			// 		if (res.data.success === false)
-			// 			return alert(res.data.msg)
-			// 		// alert();
-			// 		this.$router.go({name: 'login'})
-			// 	}, err => {
-			// 		console.log(err);
-			// 		alert('接口错误');
-			// 	})
+			api.user.regsiter(this.user)
+				.then(res => {
+					if (res.data.success === false)
+						return this.$router.app.snackbar('warning', res.data.msg)
+					this.$router.go({name: 'login', replace: true})
+					this.$router.app.snackbar('success', '注册成功')
+				}, err => {
+					if( err.status !== 401) this.$router.app.snackbar('error', '服务器异常')
+				})
 		}
 	}
 }
