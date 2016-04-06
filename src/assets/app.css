@@ -49,7 +49,7 @@ button{cursor:pointer;}
 .btn{
   display: inline-block;
   padding: 0px 10px;
-  background-color: #155882;
+  background-color: #dfbd98;
   font-size: 15px;
   color: #ffffff;
   border-radius: 5px;
@@ -79,7 +79,7 @@ ul,li{
   margin-left: 18px;
   padding-right: 18px;
   padding-bottom: 18px;
-  margin-top: 18px;
+  padding-top: 18px;
 }
 .margin-space-s{
   margin-left: 10px;
@@ -88,6 +88,9 @@ ul,li{
 }
 .margin-l{
   margin-left: 18px;
+}
+.margin-r{
+  margin-right: 18px;
 }
 .margin-t{
   margin-top: 18px;
@@ -117,8 +120,8 @@ ul,li{
 }
 .current-active{
   background-color: #ffffff!important;
-  border-bottom: solid 2px #155882;
-  color: #155882;
+  border-bottom: solid 2px #dfbd98;
+  color: #dfbd98;
 }
 .user-pannel{font-size: 16px;color: #666666;margin-top: 10px;margin-left: 2px;}
 .user-pannel i{font-style: normal;width: 16px;height: 16px;display: inline-block;}
@@ -127,7 +130,16 @@ ul,li{
   height: 44px;
   width: 100%;
   font-size: 14px;
-  border: 1px solid #155882;
+  border: 1px solid #dfbd98;
   border-radius: 4px;
-  background: #155882;
+  background: #dfbd98;
+}
+
+.fa-trash-o:before{
+  font-size: 20px;
+  color: #bf1414;
+}
+.icon.add:before{
+  font-size: 18px;
+  color: #bf1414;
 }
