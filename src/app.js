@@ -17,7 +17,7 @@ Vue.use(VueResource)
 var router = new VueRouter({
   hashbang: false,
   history: true,
-  saveScrollPosition: true
+  saveScrollPosition: true,
   // root: '/vs/dist'
 })
 
