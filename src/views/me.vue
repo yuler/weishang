@@ -2,6 +2,7 @@
 <div class="viewports">
 	<div class="container info-pannel">
 		<div class="floor-item split-line">
+			<div class="user-bg"><img src='/src/assets/i/user-bg.png' /></div>
 			<div class="user-info margin-space">
 				<span class="user-pic">
 					<img v-bind:src="user.photo | getImagePoster">
@@ -210,12 +211,16 @@ export default {
 @import '../assets/_variables.styl'
 
 /*.info-v{background-color: #E2E2E2}*/
-.info-pannel .user-info{margin-top: 18px;position: relative;}
+.info-pannel .floor-item{position:relative;}
+.info-pannel .user-bg{position:absolute;left:0;width:100%;height:100%;overflow:hidden;}
+.info-pannel .user-bg img{width:100%;height:100%;}
+.info-pannel .user-info{padding-top: 18px;position: relative;}
 .info-pannel .user-info .user-pic{width: 70px;height: 70px;overflow: hidden;line-height: 70px;text-align: center;display: inline-block;position: absolute;}
 .info-pannel .user-pic img{max-width: 100%;max-height: 100%;}
 .info-pannel .user-info{}
 .info-pannel .info-text{width: 100%;overflow: hidden;height: 38px;margin-left:88px;}
 .info-pannel .user-info .user-address{    margin-left: 85px;font-size: 16px;color: #666666;}
+
 .info-pannel .user-phone i{list-style: none;font-style: normal;}
 .info-pannel .user-phone{font-size: 15px;color: #666666; padding-left: 85px;margin-top: 10px;}
 .info-pannel .control-pannel{position: absolute;right: 32px;font-size: 14px;color: #A0A0A0;bottom: 5px;}

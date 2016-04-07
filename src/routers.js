@@ -4,6 +4,10 @@ export default (router) => {
 			name: 'index',
 			component: require('./views/index.vue')
 		},
+		'/home': {
+			name: 'home',
+			component: require('./views/home.vue')
+		},
 		'/login': {
 			name: 'login',
 			component: require('./views/login.vue')

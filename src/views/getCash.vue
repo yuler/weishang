@@ -12,7 +12,7 @@
 				<div class=" margin-space">
 				<div class="user-pannel "><i class="fa fa-user"></i><span class="user-name">{{ user.name}}</span></div>
 					<div class="account-info">
-						<i class="fa fa-money"></i>
+						
 						<span class="account-tag">账户余额</span>
 						<span class="account-number">￥{{ user.balance}}</span>
 					</div>
@@ -26,7 +26,7 @@
 							<span class="bank-number">{{ bank.cardNum }}</span>
 							<input class="bank-control" type="radio" name="bankCard" @click="chooseBankCard(bank)">
 						</div>
-						<div class="bank-userinfo margin-l">
+						<div class="bank-userinfo margin-l margin-r">
 							<div class="user-name">
 								<span>姓名:</span>
 								<span>{{ user.name }}</span>
@@ -139,8 +139,8 @@ export default {
 <style scoped>
 .cash-pannel .v-link-active{
 	background-color: #ffffff!important;
-	border-bottom: solid 2px #155882;
-	color: #155882;
+	border-bottom: solid 2px #dfbd98;
+	color: #dfbd98;
 }
 .cash-pannel .title-pannel .cash-item{
 	width: 50%;
@@ -153,17 +153,18 @@ export default {
 
 .cash-pannel .account-info{
 	width:100%;
-	margin-top: -8px;
+	margin-top: -4px;
 }
 .cash-pannel .account-info .account-tag{
 	font-size: 14px;
 	color: #8A8A8A;
-	margin-left: 18px;
+	margin-left: 21px;
 }
 
 .cash-pannel .account-info .account-number{
-	font-size: 14px;
-	color: #ED6E0D;
+	font-size: 17px;
+	color: #b51d1a;
+	font-weight: 500;
 	float: right;
 	margin-right: 50px;
 }
@@ -193,7 +194,10 @@ export default {
 	/* margin-top: 5px; */
 	/* margin-bottom: 5px; */
 }
-.cash-pannel .user-name,.cash-pannel .bank-mobile,.cash-pannel .bank-addr{
+.cash-pannel .bank-userinfo div{
+	border-bottom:1px dashed #626262;
+}
+.cash-pannel .user-name,.cash-pannel .user-mobile,.cash-pannel .bank-addr{
 	height: 30px;
 	line-height: 30px;
 	color: #666666;
