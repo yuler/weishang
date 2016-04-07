@@ -15,6 +15,7 @@ module.exports = merge(baseConfig, {
   },
   devtool: SOURCE_MAP ? '#source-map' : false,
   output: {
+    publicPath: '/static/',
     // naming output files with hashes for better caching.
     // dist/index.html will be auto-generated with correct URLs.
     filename: '[name].[chunkhash].js',
@@ -22,7 +23,8 @@ module.exports = merge(baseConfig, {
   },
   module: {
     loaders: [
-      { test: /\.styl$/, loader: cssLoaders({ sourceMap: true, extract: true }).styl }
+      { test: /\.styl$/, loader: cssLoaders({ sourceMap: true, extract: true }).styl },
+      { test: /\.css$/, loader: cssLoaders({ sourceMap: true, extract: true }).css }
     ]
   },
   vue: {

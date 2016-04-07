@@ -5,14 +5,14 @@ var config = require('./webpack.dev.conf')
 config.entry.app.unshift("webpack-dev-server/client?http://localhost:9090", "webpack/hot/dev-server")
 
 var proxy = {
-  "/vs/*": {target: "http://123.56.235.156", host: "123.56.235.156"},
+  "/vs/*": { target: "http://123.56.235.156", host: "123.56.235.156" },
 };
 
 var compiler = webpack(config)
 var app = new WebpackDevServer(compiler, {
   // publicPath: config.output.publicPath,
   historyApiFallback: true,
-  // proxy: proxy,
+  proxy: proxy,
   hot: true,
   stats: {
     colors: true,
