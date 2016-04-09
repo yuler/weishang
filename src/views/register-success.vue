@@ -1,5 +1,5 @@
 <template>
-<div class='viewport'>
+<div class='viewports'>
     <div class='container'>
         <div class='floor-item margin-t'>
             <div class='success-pannel'><span class="success-icon"><img src='/src/assets/i/success-icon.png' /></span></div>

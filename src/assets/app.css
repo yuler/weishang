@@ -143,3 +143,7 @@ ul,li{
   font-size: 18px;
   color: #bf1414;
 }
+.weishang-icon{
+  background: url(i/weishang-icon.png) no-repeat;
+  background-size: 200px 200px;
+}
