@@ -76,7 +76,7 @@ export default {
 				.then(res => {
 					var host = window.location.host
 					var pathname = window.location.pathname
-					var return_url = `http://${host}${pathname}/order/wait`
+					var return_url = `http://${host}${pathname}order/wait`
 					if( res.data.success === false) return this.$router.app.snackbar('warning', res.data.msg)
 					this.$router.app.showIndicator();
 					BC.click({
@@ -119,7 +119,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import '../assets/variables.styl'
+@import '../assets/_variables.styl'
 
 #productionShow
 	padding 10px 15px 50px 15px

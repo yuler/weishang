@@ -1,3 +1,5 @@
+import 'font-awesome/css/font-awesome.css'
+
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource'
@@ -18,8 +20,8 @@ var router = new VueRouter({
   hashbang: false,
   history: true,
   saveScrollPosition: true,
-  // root: '/vs/dist'
+  // root: '/vs/weishang/'
 })
 
 routers(router)
-router.start(App,'#app')
+router.start(App,'app')

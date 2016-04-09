@@ -7,7 +7,7 @@
 </template>
 
 <style lang="stylus" scoped>
-@import "../assets/variables.styl"
+@import "../assets/_variables.styl"
 
 header
 	display -webkit-flex

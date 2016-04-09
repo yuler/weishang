@@ -18,7 +18,8 @@ module.exports = merge(baseConfig, {
   },
   module: {
     loaders: [
-      { test: /\.styl$/, loader: cssLoaders({ sourceMap: false, extract: false }).styl }
+      { test: /\.styl$/, loader: cssLoaders({ sourceMap: false, extract: false }).styl },
+      { test: /\.css$/, loader: cssLoaders({ sourceMap: false, extract: false }).css }
     ]
   },
   plugins: [

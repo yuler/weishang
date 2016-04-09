@@ -208,7 +208,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import '../assets/variables.styl'
+@import '../assets/_variables.styl'
 
 /*.info-v{background-color: #E2E2E2}*/
 .info-pannel .floor-item{position:relative;}

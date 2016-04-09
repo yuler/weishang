@@ -74,7 +74,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-@import "../assets/variables.styl"
+@import "../assets/_variables.styl"
 
 div#register-view
 	padding-top 20px
