@@ -11,30 +11,30 @@
 <div class="mask" v-show="state.pay" transition="fade" @click="closeForm">
 	<form class="buyFrom" @click="stopEvent" transition="fade">
 	<div class="floor-item">
-        	<div class="detail-box margin-space-s">
-              <div class="box-item split-line">
-              <label for="">购买数量111：</label>
-              			<input type="number" placeholder="购买数量" v-model="order['products[0].sum']">
-              </div>
-              <div class="box-item split-line">
-              <label for="">收货人姓名：</label>
-              			<input type="text" placeholder="收货人地址" v-model="order.reciver">
-              </div>
-              <div class="box-item split-line">
-              <label for="">收货人联系电话：</label>
-              			<input type="text" placeholder="收货人联系电话" v-model="order.reciverMobile">
-              </div>
-              <div class="box-item split-line">
-              <label for="">收货地址：</label>
-              			<input type="text" placeholder="收货地址" v-model="order.reciverAddress">
-              </div>
-            </div>
-     </div>
+		<div class="detail-box margin-space-s">
+			<div class="box-item split-line">
+				<label for="">购买数量：</label>
+				<input type="number" placeholder="购买数量" v-model="order['products[0].sum']">
+			</div>
+			<div class="box-item split-line">
+				<label for="">收货人姓名：</label>
+				<input type="text" placeholder="收货人地址" v-model="order.reciver">
+			</div>
+			<div class="box-item split-line">
+				<label for="">收货人联系电话：</label>
+				<input type="text" placeholder="收货人联系电话" v-model="order.reciverMobile">
+			</div>
+			<div class="box-item split-line">
+				<label for="">收货地址：</label>
+				<input type="text" placeholder="收货地址" v-model="order.reciverAddress">
+			</div>
+		</div>
+	 </div>
 	</form>
 </div>
 
 </template>
-  
+	
 <script>
 import api from '../api.js'
 
@@ -188,14 +188,14 @@ form.fade-enter, div.fade-leave
 	padding:6px 0;
 }
 .mask .floor-item .box-item input{
-	    font-size: 14px;
-        display: inline-block;
-        padding: 4px 12px;
-        width: calc(100% - 44px);
-        height: 40px;
-        border-radius:4px;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-        width:100%;
+	font-size: 14px;
+	display: inline-block;
+	padding: 4px 12px;
+	width: calc(100% - 44px);
+	height: 40px;
+	border-radius:4px;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+	width:100%;
 }
 </style> 
