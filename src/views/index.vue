@@ -12,7 +12,8 @@
 			<div class="floor-item">
 				<div class="activity-container">
 					<div class="activity-left">
-						<img src="/static/i/data-pic01.png">
+						{{productions[0].photoIds | json}}
+						<!-- <img v-bind:src="productions[0].photoIds | getImagePoster"> -->
 					</div>
 					<div class="activity-right">
 						<div class="activity-right-item">
@@ -75,6 +76,37 @@
 		</div>
 	</div>
 </template>
+
+<script>
+import api from '../api.js'
+
+export default {
+	data () {
+		return {
+			productions: [],
+			pagination: {
+				page: 1,
+				limit: 9
+			}
+		}
+	},
+	route: {
+		data ({ to }) {
+			return api.productions.index(this.pagination.page, this.pagination.limit)
+				.then(res => {
+					return {
+						productions: res.data.rows,
+					}
+				}, err => {
+					console.log(err);
+					alert('接口错误');
+				})
+		}
+	}
+}
+
+</script>
+
 <style>
 	.home-pannel .home-menu{
 		height:44px;
