@@ -4,9 +4,9 @@ export default (router) => {
 			name: 'index',
 			component: require('./views/index.vue')
 		},
-		'/home': {
+		'/category': {
 			name: 'home',
-			component: require('./views/home.vue')
+			component: require('./views/productionCategory.vue')
 		},
 		'/login': {
 			name: 'login',
