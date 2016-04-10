@@ -182,7 +182,6 @@ export default {
 							type:'USER_PAY',
 							out_trade_no:res.data.out_trade_no
 						},
-						instant_channel:"ali",
 						need_ali_guide:"true"
 					}, {
 						dataError:function(msg){

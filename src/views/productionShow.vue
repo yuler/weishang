@@ -76,7 +76,7 @@ export default {
 				.then(res => {
 					var host = window.location.host
 					var pathname = window.location.pathname
-					var return_url = `http://${host}${pathname}order/wait`
+					var return_url = `http://${host}order/wait`
 					if( res.data.success === false) return this.$router.app.snackbar('warning', res.data.msg)
 					this.$router.app.showIndicator();
 					BC.click({
@@ -90,7 +90,7 @@ export default {
 							out_trade_no:res.data.out_trade_no,
 							order_id: res.data.order_id
 						},
-						instant_channel:"ali",
+						// instant_channel:"ali",
 						need_ali_guide:"true"
 					}, {
 						dataError:function(msg){
