@@ -14,7 +14,10 @@ module.exports = merge(baseConfig, {
   output: {
     // necessary for the html plugin to work properly
     // when serving the html from in-memory
-    publicPath: '/'
+    publicPath: '/',
+    // 解决缓存问题
+    filename: '[name].[chunkhash].js',
+    chunkFilename: '[id].[chunkhash].js'
   },
   module: {
     loaders: [
