@@ -2,7 +2,7 @@
 <div class="viewports">
 	<div class="container info-pannel">
 		<div class="floor-item split-line">
-			<div class="user-bg"><img src='/src/assets/i/user-bg.png' /></div>
+			<div class="user-bg"><img src='/static/i/user-bg.png' /></div>
 			<div class="user-info margin-space">
 				<span class="user-pic">
 					<img v-bind:src="user.photo | getImagePoster">
