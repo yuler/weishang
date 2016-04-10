@@ -13,7 +13,7 @@
 	<div class="floor-item">
         	<div class="detail-box margin-space-s">
               <div class="box-item split-line">
-              <label for="">购买数量：</label>
+              <label for="">购买数量111：</label>
               			<input type="number" placeholder="购买数量" v-model="order['products[0].sum']">
               </div>
               <div class="box-item split-line">
@@ -137,6 +137,7 @@ export default {
 		&.intro
 			font-size 16px
 	a.btn
+		padding-left 0
 		text-decoration none
 		display block
 		background $themeColor
@@ -150,6 +151,7 @@ export default {
 		position fixed
 		left 0
 		bottom 0px
+		border-radius: 0;
 div.mask
 	position fixed
 	top 100%
@@ -178,7 +180,6 @@ form.fade-transition
 	bottom 0px
 form.fade-enter, div.fade-leave
 	bottom 0px
-
 
 .mask .floor-item{
 	margin:0;
