@@ -209,6 +209,12 @@ ul,li{
 		display: inline-block;
 		width: 56.25%;
 	}
+	.activity-right-item{
+		border-bottom: 1px solid #cbcbcb;
+	}
+	.activity-right-item:last-child{
+		border-bottom: none;
+	}
 	.activity-container{
 		border-bottom: 1px solid #cbcbcb;
 	}
@@ -235,8 +241,8 @@ ul,li{
 		border-right: 1px solid #cbcbcb;
 		padding-bottom: 10px;
 	}
-	.list-container .list-data .list-item:last-child{
-		/*border-right: none;*/
+	.list-container .list-data li:nth-child(3n) .list-item{
+		border-right: none;
 	}
 	.home-pannel .list-container img{
 		width: 100%;
@@ -244,8 +250,9 @@ ul,li{
 	}
 	.list-container .list-data .product-name{
 		height: 30px;
-		margin:0 10px;
+		margin:0 8px;
 		overflow: hidden;
+		line-height: 15px;
 	}
 	.list-container .list-data .product-price{
 		margin-top: 3px;
@@ -258,7 +265,10 @@ ul,li{
 	.grey{
 		color: #cbcbcb;
 	}
-
+	.home-pannel .floor-item{
+		margin-bottom: 8px;
+		border-top: 1px solid #cbcbcb;
+	}
 	</style>
 </head>
 <body>
@@ -290,7 +300,7 @@ ul,li{
 			<div class="floor-item">
 				<div class="list-container">
 					<ul class="list-data">
-						<li class="">
+						<li>
 							<div class="list-item">
 								<img src="src/assets/i/data-pic01.png">
 								<div class="product-name">金盛(Kingshare)T1系列64GB-B1便携式固态</div>
@@ -311,7 +321,7 @@ ul,li{
 								<div class="product-price red">￥329.00</div>
 							</div>
 						</li>
-						<li class="">
+						<li>
 							<div class="list-item">
 								<img src="src/assets/i/data-pic01.png">
 								<div class="product-name">金盛(Kingshare)T1系列64GB-B1便携式固态</div>
