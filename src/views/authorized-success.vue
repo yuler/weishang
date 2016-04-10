@@ -6,7 +6,7 @@
                 <div class="success-tag">认证成功</div>
                 <div class="success-tag2">您已完成认证</div>
                 <div class="success-pic"><img src="/static/i/LOGO2.png" /></div>
-                <a href='home'><div class="success-tag3">>>>前往首页<<<</div></a>
+                <a href='/'><div class="success-tag3">>>>前往首页<<<</div></a>
             </div>
             <div class='floor-item company-info'>
                 <div class="success-tag2">产品名称或公司</div>

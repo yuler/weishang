@@ -20,7 +20,8 @@
 					</div>
 					<div class="activity-right">
 						<div class="activity-right-item" v-for="p in productions" track-by="$index" v-link="{ name: 'productionShow', params: { id: p.id }}" v-if="$index == 1 || $index == 2">
-							<img v-bind:src="p.photoIds | getImagePoster" style="width:180px;height:70px;">
+						   <div class="activity-right-item">
+							<img v-bind:src="p.photoIds | getImagePoster" style="width:180px;height:70px;"></div>
 						</div>
 					</div>
 				</div>

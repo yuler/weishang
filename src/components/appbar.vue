@@ -24,13 +24,14 @@ header
 	box-shadow 0 1px 3px rgba(0,0,0,0.3)
 	a
 		color white
-		float left
+		position absolute
 		i
 			line-height $appbarHeight
 			width $appbarHeight
 			text-align center
 		&:last-child
-			float right
+			position absolute
+			right 0
 	h1
 		text-align center
 		line-height $appbarHeight
@@ -38,6 +39,8 @@ header
 		width 100%
 		color white
 		display inline-block
+		margin-left 34px
+		margin-right 34px
 </style>
 
 <script>
