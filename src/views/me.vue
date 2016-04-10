@@ -244,7 +244,7 @@ export default {
         width: calc(100% - 44px);
         height: 40px;
         border-radius:4px;
-        border: 1px solid #ccc;
+        border: 1px solid #dfbd98;
         box-sizing: border-box;
         width:100%;
 }
