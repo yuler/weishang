@@ -5,7 +5,7 @@ export default (router) => {
 			component: require('./views/index.vue')
 		},
 		'/category': {
-			name: 'home',
+			name: 'category',
 			component: require('./views/productionCategory.vue')
 		},
 		'/login': {

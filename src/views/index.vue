@@ -4,23 +4,20 @@
 			<div class="floor-item">
 				<div class="title-container">
 					<i class="weishang-icon "></i>
-					<span class="all-icon">全部商品</span>
+					<span class="all-icon" v-link="{ name: 'category' }">全部商品</span>
 				</div>
-				<div class="home-bg"><img src="/static/i/home-banner.png"></div>
-
+				<div class="home-bg">
+					<img v-bind:src="b.imagePath | banner" v-for="b in banner" v-if="$index == 0">
+				</div>
 			</div>
 			<div class="floor-item">
 				<div class="activity-container">
-					<div class="activity-left">
-						{{productions[0].photoIds | json}}
-						<!-- <img v-bind:src="productions[0].photoIds | getImagePoster"> -->
+					<div class="activity-left" v-for="p in productions" track-by="$index" v-link="{ name: 'productionShow', params: { id: p.id }}" v-if="$index == 0">
+						<img v-bind:src="p.photoIds | getImagePoster">
 					</div>
 					<div class="activity-right">
-						<div class="activity-right-item">
-							<img src="/static/i/floor-right01.png">
-						</div>
-						<div class="activity-right-item">
-							<img src="/static/i/floor-right01.png">
+						<div class="activity-right-item" v-for="p in productions" track-by="$index" v-link="{ name: 'productionShow', params: { id: p.id }}" v-if="$index == 1 || $index == 2">
+							<img v-bind:src="p.photoIds | getImagePoster" style="width:180px;height:70px;">
 						</div>
 					</div>
 				</div>
@@ -28,46 +25,11 @@
 			<div class="floor-item">
 				<div class="list-container">
 					<ul class="list-data">
-						<li class="">
-							<div class="list-item">
-								<img src="/static/i/data-pic01.png">
-								<div class="product-name">金盛(Kingshare)T1系列64GB-B1便携式固态</div>
-								<div class="product-price red">￥329.00</div>
-							</div>
-						</li>
-						<li >
-								<div class="list-item">
-								<img src="/static/i/data-pic01.png">
-								<div class="product-name">金盛(Kingshare)T1系列64GB-B1便携式固态</div>
-								<div class="product-price red">￥329.00</div>
-							</div>
-						</li>
-						<li>
-									<div class="list-item">
-								<img src="/static/i/data-pic01.png">
-								<div class="product-name">金盛(Kingshare)T1系列64GB-B1便携式固态</div>
-								<div class="product-price red">￥329.00</div>
-							</div>
-						</li>
-						<li class="">
-							<div class="list-item">
-								<img src="/static/i/data-pic01.png">
-								<div class="product-name">金盛(Kingshare)T1系列64GB-B1便携式固态</div>
-								<div class="product-price red">￥329.00</div>
-							</div>
-						</li>
-						<li >
-								<div class="list-item">
-								<img src="/static/i/data-pic01.png">
-								<div class="product-name">金盛(Kingshare)T1系列64GB-B1便携式固态</div>
-								<div class="product-price red">￥329.00</div>
-							</div>
-						</li>
-						<li>
-									<div class="list-item">
-								<img src="/static/i/data-pic01.png">
-								<div class="product-name">金盛(Kingshare)T1系列64GB-B1便携式固态</div>
-								<div class="product-price red">￥329.00</div>
+						<li v-for="p in productions" track-by="$index" v-link="{ name: 'productionShow', params: { id: p.id }}">
+							<div class="list-item" v-if="$index >= 3">
+								<img v-bind:src="p.photoIds | getImagePoster">
+								<div class="product-name">{{ p.name }}</div>
+								<div class="product-price red">￥ {{ p.price }}</div>
 							</div>
 						</li>
 					</ul>
@@ -83,6 +45,7 @@ import api from '../api.js'
 export default {
 	data () {
 		return {
+			banner: {},
 			productions: [],
 			pagination: {
 				page: 1,
@@ -92,14 +55,18 @@ export default {
 	},
 	route: {
 		data ({ to }) {
-			return api.productions.index(this.pagination.page, this.pagination.limit)
+			api.banner()
 				.then(res => {
-					return {
-						productions: res.data.rows,
-					}
+					this.banner = res.data.ads
 				}, err => {
-					console.log(err);
-					alert('接口错误');
+					console.log(err)
+				})
+			api.productions.index(this.pagination.page, this.pagination.limit)
+				.then(res => {
+					this.productions = res.data.rows
+				}, err => {
+					console.log(err)
+					alert('接口错误')
 				})
 		}
 	}
@@ -206,7 +173,9 @@ export default {
 	.list-container .list-data .product-price{
 		margin-top: 3px;
 		margin:0 10px;
-		
+	}
+	.list-container .list-data li:nth-child(3n) .list-item{
+		border-right: none;
 	}
 	.red{
 		color: #b51d1a;
