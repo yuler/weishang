@@ -10,9 +10,6 @@
 @import "../assets/_variables.styl"
 
 header
-	display -webkit-flex
-	display -ms-flexbox
-	display flex
 	padding 5px
 	height 34px
 	background $themeColor
@@ -32,15 +29,16 @@ header
 		&:last-child
 			position absolute
 			right 0
+			top 5px;
+		&:first-child
+			left 0
 	h1
 		text-align center
 		line-height $appbarHeight
 		font-size 20px
 		width 100%
 		color white
-		display inline-block
-		margin-left 34px
-		margin-right 34px
+		display block
 </style>
 
 <script>
