@@ -1,15 +1,15 @@
 <template>
 <div class='viewports'>
-    <div class='container'>
+    <div class='container register-pannel'>
         <div class='floor-item margin-t'>
-            <div class='success-pannel'><span class="success-icon"><img src='/src/assets/i/success-icon.png' /></span></div>
+            <div class='success-pannel'><span class="success-icon"><img src='/static/i/success-icon.png' /></span></div>
             <div class="success-tag">注册成功</div>
             <div class="success-tag2">您的账户处于未认证状态无法使用系统查价购买等功能。</div>
-            <a href='#'><div class="success-tag3">点击前往认证平台完成认证</div></a>
+            <a href='success'><div class="success-tag3"><span>>>>点击前往认证平台完成认证<<<</span></div></a>
             <div class="success-tag2">认证费:<span class="authorized-change">￥100</span></div>
              <div class="info">
                         <div class="info-container">
-                            <span class="tuijian-pic"><img src="/src/assets/i/role.png"></span>
+                            <span class="tuijian-pic"><img src="/static/i/role.png"></span>
                             <span class="tuijian-info">
                                 <span>推荐人</span>
                                 <span class="name">李老大</span>
@@ -61,7 +61,15 @@
                     color:#5C5BF4;
                     text-align: center;
                     margin-top:50px;
+                        height: 40px;
+                    line-height: 40px;
         }
+    .success-tag3 span{
+        padding:8px 15px;
+        background-color:#dfbd98;
+        border-radius:4px;
+        color:#fff;
+    } 
      .success-tag4{
                  font-size:15px;
                          color:#5C5BF4;
@@ -77,7 +85,7 @@
          height: 180px;
          text-align: center;
          position: relative;
-         border-bottom: solid 1px #B0B0B0;
+         
          margin: 0;
      }
      .register-pannel .info-container{
@@ -110,16 +118,18 @@
          height: 44px;
          overflow: hidden;
          margin-top: 5px;
+         border-radius:50% 50%;
      }
      .register-pannel .tuijian-pic img{
          max-width: 100%;
          max-height: 100%;
+         border-radius:50% 50%;
      }
      .register-pannel .tuijian-info {
          display: inline-block;
          font-size: 15px;
          color: #636363;
-         margin-top: -4px;
+         
      }
      .register-pannel span.tuijian-info{
          display: inline-block;

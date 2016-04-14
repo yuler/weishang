@@ -2,7 +2,7 @@
 <div class="viewports">
 	<div class="container info-pannel">
 		<div class="floor-item split-line">
-			<div class="user-bg"><img src='/src/assets/i/user-bg.png' /></div>
+			<div class="user-bg"><img src='/static/i/user-bg.png' /></div>
 			<div class="user-info margin-space">
 				<span class="user-pic">
 					<img v-bind:src="user.photo | getImagePoster">
@@ -243,7 +243,7 @@ export default {
         width: calc(100% - 44px);
         height: 40px;
         border-radius:4px;
-        border: 1px solid #ccc;
+        border: 1px solid #dfbd98;
         box-sizing: border-box;
         width:100%;
 }

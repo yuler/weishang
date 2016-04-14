@@ -1,6 +1,7 @@
 <template>
 <div id="register-view">
-	<h1>用户注册</h1><br>
+	<div class="reg-png"><img src="/static/i/LOGO2.png"></div>
+	
 	<form @submit.prevent="register">
 		<div class="form-group">
 			<span><i class="fa fa-mobile"></i></span>
@@ -19,7 +20,14 @@
 			<span><i class="fa fa-key"></i></span>
 			<input v-model="user.password" type="password" placeholder="密码">
 		</div class="form-group">
-		<br><br>	
+		<br>
+		<div class="tuijian-container">
+			<img src="/static/i/user-pic.png"/>
+			<span class="tuijian-info">
+			李老大
+			</span>
+		</div>
+		<br>	
 		<div class="form-group">
 			<button type="submit">注册</button>
 		</div>
@@ -78,6 +86,7 @@ export default {
 
 div#register-view
 	padding-top 20px
+	color #dfbd98
 	h1
 		font-size 20px
 		text-align center
@@ -135,4 +144,29 @@ div#register-view
 				background $themeColor
 				&:focus
 					outline:none;
+.reg-png{
+	width:100%;
+	text-align:center;
+	margin-bottom:10px;
+}
+.reg-png img{
+	width:80px;
+	height:auto;
+}
+.tuijian-container{
+	height:50px;
+	width:100%;
+	text-align:center;
+	line-height:50px;
+	    font-size: 0;
+}
+.tuijian-container img{
+	width:40px;
+	height:auto;
+	border-radius:20px 20px;
+}
+.tuijian-container .tuijian-info{
+	font-size:18px;
+	color: #333333;
+}
 </style>

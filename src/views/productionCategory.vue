@@ -1,18 +1,27 @@
 <template>
-<ul class="productions items" id="productions" @scroll="scrollFunc">
-		<li v-for="p in productions" v-link="{ name: 'productionShow', params: { id: p.id }}">
-				<div class="poster">
-					<img v-bind:src="p.photoIds | getImagePoster">
-				</div>
-				<div class="content">
-					<p>{{p.name}}</p>
-					<p v-html="p.summary"></p>
-					<p v-if="p.productType">{{p.productType.name}}</p>
-					<p></p>
-				</div>
-				<span>￥{{ p.price }}</span>
-		</li>
-</ul>
+<div class="viewports">
+	<div class="container product-pannel">
+		<div class="floor-item">
+			<ul class="product-list">
+				<li class="split-line" v-for="p in productions" v-link="{ name: 'productionShow', params: { id: p.id }}">
+					<div class="product-content ">
+						<span class="product-pic">
+							<img v-bind:src="p.photoIds | getImagePoster">
+						</span>
+						<div class="product-info">
+							<div class="product-name">{{p.name}}</div>
+							<div class="product-detail"><p v-html="p.summary"></p></div>
+							<div class="product-attr"></div>
+							<div class="product-receiver"><p v-if="p.productType">{{p.productType.name}}</p></div>
+							
+						</div>
+						<span class="product-num">￥{{ p.price }}</span>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
 </template>
 
 <script>
@@ -66,14 +75,15 @@ export default {
 <style lang="stylus" scoped>
 ul
 	-webkit-overflow-scrolling: touch;
-	box-sizing: border-box;
+	box-sizing: bproduct-box;
 	height: 100%;
 	position: relative;
 	overflow-y auto
+	overflow-x hidden
 	width 100%
 	li
 		padding 10px
-		border-bottom: 1px solid #ccc
+		bproduct-bottom: 1px solid #ccc
 		display -webkit-flex
 		display -moz-flex
 		display -ms-flex
@@ -82,7 +92,7 @@ ul
 		div.poster img
 				width 60px
 				height 60px
-				border-radius 3px
+				bproduct-radius 3px
 		div.content
 			width 100%
 			margin: 0 5px 0 10px
@@ -97,6 +107,109 @@ ul
 			line-height 60px
 			width 50px
 			text-align center
+.product-pannel{
+		font-size:16px
+	}
+	.product-pannel .title-item{
+		width:33.3%;
+		bproduct-right:solid 1px #C8C8C8;
+		box-sizing: bproduct-box;
+	}
+	.product-pannel .product-list{
+		font-size:14px;
+		color:#7C7C7C;
+	}
+	.product-pannel .product-list li{
+		overflow:hidden;
+	}
+	.product-pannel .product-number{
+		bproduct-bottom:dashed 1px #e1e1e1;
+		padding:7px 7px 7px 7px;
+	}
+	.product-pannel .product-content{
+		position:relative;
+		    width: 100%;
+	}
+	.product-pannel .product-pic{
+		width:80px;
+		height:80px;
+		display:inline-block;
+		float:left;
+		overflow:hidden;
+	}
+	.product-pannel .product-pic img{
+		width:100%;
+		height:auto;
+	}
+	.product-pannel .product-info{
+		margin-left:80px;
+		margin-right:45px;
+	}
+	.product-pannel .product-info div{
+		margin-top:3px;
+	}
+	.product-pannel .product-info .product-name{
+		color:#333333;
+		white-space:nowrap;
+		text-overflow:ellipsis;
+		overflow:hidden;
+		font-size:15px;
+	}
+	.product-pannel .product-info .product-detail{
+		 color:#767676;
+		     display: -webkit-box;
+		         -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    	overflow: hidden;
+    	font-size: 13px;
+    	text-align: left;
+    	height: 30px;
+    	margin-top:3px;
+	}
+	.product-pannel .product-info .product-receiver{
+		color:#767676;
+		font-size: 13px;
+		margin-top:3px;
+	}
+	.product-pannel .product-info .product-attr{
+		color:#767676;
+		height:13px;
+		font-size: 13px;
+		margin-top:3px;
+	}
+	.product-pannel .product-num{
+		display:inline-block;
+		position:absolute;
+		    right: 3px;
+			top: 35px;
+			font-size:14px;
+			color:#b51d1a;
+	}
+	.product-pannel .product-sp{
+
+	}
+	.product-pannel .product-sp .product-status{
+		margin-left:26px;
+		font-size:12px;
+		color:#BCBCBC;
+	}
+	.product-pannel .product-sp .product-price{
+		float:right;
+		font-size:15px;
+		margin-right:10px;
+		color:#F27115;
+	}
+	.title-pannel .title-item{
+   float: left;
+   height: 100%;
+   text-align: center;
+   background-color: #DADADA;
+ }
+ .v-link-active{
+   background-color: #ffffff!important;
+   bproduct-bottom: solid 2px #155882;
+   color: #155882;
+ }
 </style>
 
 

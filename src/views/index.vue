@@ -13,11 +13,15 @@
 			<div class="floor-item">
 				<div class="activity-container">
 					<div class="activity-left" v-for="p in productions" track-by="$index" v-link="{ name: 'productionShow', params: { id: p.id }}" v-if="$index == 0">
-						<img v-bind:src="p.photoIds | getImagePoster">
+						<div class="img-container">
+<img v-bind:src="p.photoIds | getImagePoster">
+						</div>
+						
 					</div>
 					<div class="activity-right">
 						<div class="activity-right-item" v-for="p in productions" track-by="$index" v-link="{ name: 'productionShow', params: { id: p.id }}" v-if="$index == 1 || $index == 2">
-							<img v-bind:src="p.photoIds | getImagePoster" style="width:180px;height:70px;">
+						   <div class="activity-right-item">
+							<img v-bind:src="p.photoIds | getImagePoster" style="width:180px;height:70px;"></div>
 						</div>
 					</div>
 				</div>
@@ -182,5 +186,18 @@ export default {
 	}
 	.grey{
 		color: #cbcbcb;
+	}
+	.home-pannel .floor-item{
+		margin-bottom: 8px;
+		border-top: 1px solid #cbcbcb;
+	}
+	.home-pannel .activity-left .img-container{
+		border-right: 1px solid #cbcbcb;
+	}
+	.activity-right-item{
+		border-bottom: 1px solid #cbcbcb;
+	}
+	.activity-right-item:last-child{
+		border-bottom: none;
 	}
 </style>
