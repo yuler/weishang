@@ -85,6 +85,7 @@ export default {
 @import "../assets/_variables.styl"
 
 div#register-view
+	width 100%
 	padding-top 20px
 	color #dfbd98
 	h1
@@ -92,12 +93,12 @@ div#register-view
 		text-align center
 		margin 10px 0px
 	form
-		margin 0 10px
+		width 100%
 		div.form-group
-			width 100%
 			margin-bottom: 15px;
 			white-space: nowrap;
 			font-size: 0;
+			padding: 0 10px;
 			span
 				font-size 14px
 				display: inline-block;
@@ -109,11 +110,14 @@ div#register-view
 				text-align center
 				border: 1px solid #cccccc;
 				border-radius: 4px 0 0 4px;
+				background-color:white;
+				position:absolute;
 			input
 				font-size 14px
-				display: inline-block;
+				display: block;
 				padding 4px 12px
-				width: calc(100% - 44px);
+				width: 100%;
+				padding-left:44px;
 				height 44px
 				border-radius: 0 4px 4px 0;
 				border: 1px solid #cccccc;
