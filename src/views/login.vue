@@ -91,7 +91,7 @@ div#login-view
 				display: block;
 				padding 4px 12px
 				width: 100%;
-				padding-left:44px;
+				padding-left:52px;
 				height 44px
 				border-radius: 0 4px 4px 0;
 				border: 1px solid #cccccc;

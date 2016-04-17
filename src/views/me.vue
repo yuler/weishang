@@ -13,8 +13,9 @@
 						<span class="phone"><i class="fa fa-mobile"></i> {{user.mobile}}</span>
 					</div>
 				</span>
-				<div class="user-pannel"><i class="icon user"></i><span class="user-name">{{user.loginName}}</span></div>
-				<div class="control-pannel" v-link="{ name: 'editUser' }"><i class="fa fa-conf"></i> <span>编辑</span></div>
+				<div class="user-pannel"><i class="icon user"></i><span class="user-name">{{user.name}}</span></div>
+				<div class="control-pannel edit" v-link="{ name: 'editUser' }"><i class="fa fa-conf"></i> <span>编辑</span></div>
+				<div class="control-pannel" @logout><i class="fa fa-conf"></i> <span>退出</span></div>
 			</div>
 		</div>
 		<div class="floor-item floor-space">
@@ -225,6 +226,7 @@ export default {
 .info-pannel .user-phone{font-size: 15px;color: #666666; padding-left: 85px;margin-top: 10px;}
 .info-pannel .control-pannel{position: absolute;right: 32px;font-size: 14px;color: #A0A0A0;bottom: 5px;}
 .info-pannel .control-pannel i{font-style: normal}
+.info-pannel .control-pannel.edit { right: 80px}
 .info-pannel .detail-box{}
 .info-pannel .box-item{font-size: 16px;color: #666666;padding: 16px 0 16px 0;}
 .info-pannel .box-item .cash-number{font-size: 15px;}
