@@ -110,7 +110,7 @@ export default {
 			var host = window.location.host
 			var pathname = window.location.pathname
 			var userId = this.user.id
-      return `http://${host}${pathname}/register/${userId}`
+      return `http://${host}/register/${userId}`
     }
 	},
 	methods: {
@@ -182,7 +182,6 @@ export default {
 							type:'USER_PAY',
 							out_trade_no:res.data.out_trade_no
 						},
-						instant_channel:"ali",
 						need_ali_guide:"true"
 					}, {
 						dataError:function(msg){

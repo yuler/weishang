@@ -24,14 +24,14 @@ export default (router) => {
 			name: 'editUser',
 			component: require('./views/editUser.vue')
 		},
-		'/success': {
-			name:'success',
-			component:require('./views/authorized-success.vue')
-		},
-		'/success1': {
-			name:'success',
-			component:require('./views/register-success.vue')
-		},
+		// '/success': {
+		// 	name:'success',
+		// 	component:require('./views/authorized-success.vue')
+		// },
+		// '/success1': {
+		// 	name:'success',
+		// 	component:require('./views/register-success.vue')
+		// },
 		'/register/:userId': {
 			name:'register',
 			component:require('./views/register.vue')
