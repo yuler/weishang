@@ -127,15 +127,15 @@ export default {
 		width 100%
 		margin-bottom 10px
 	h1
-		font-size 20px
+		font-size 15px
 		margin-bottom 10px
 	p
 		&.addrs
-			font-size 18px
+			font-size 12px
 			color #777
 			margin-bottom 10px
 		&.intro
-			font-size 16px
+			font-size 14px
 	a.btn
 		padding-left 0
 		text-decoration none
