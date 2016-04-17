@@ -10,7 +10,7 @@
 						</span>
 						<div class="product-info">
 							<div class="product-name">{{p.name}}</div>
-							<div class="product-detail"><p v-html="p.summary"></p></div>
+							<div class="product-detail"><p v-html="p.remarks"></p></div>
 							<div class="product-attr"></div>
 							<div class="product-receiver"><p v-if="p.productType">{{p.productType.name}}</p></div>
 							
