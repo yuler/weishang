@@ -37,6 +37,7 @@
 	
 <script>
 import api from '../api.js'
+import Carousel from '../components/Carousel.vue'
 
 export default {
 	data () {
@@ -113,6 +114,9 @@ export default {
 		stopEvent (e) {
 			e.stopPropagation()
 		}
+	},
+	components: {
+		'Carousel': Carousel
 	}
 }
 
@@ -120,7 +124,6 @@ export default {
 
 <style lang="stylus" scoped>
 @import '../assets/_variables.styl'
-
 #productionShow
 	padding 10px 15px 50px 15px
 	img
