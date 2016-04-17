@@ -7,6 +7,7 @@ export default (router) => {
 		},
 		'/category': {
 			name: 'category',
+			title: '全部商品',
 			component: require('./views/productionCategory.vue')
 		},
 		'/login': {
@@ -21,10 +22,12 @@ export default (router) => {
 		},
 		'/p/:id': {
 			name: 'productionShow',
+			title: '商品',
 			component: require('./views/productionShow.vue')
 		},
 		'/edit/': {
 			name: 'editUser',
+			title: '个人设置',
 			component: require('./views/editUser.vue')
 		},
 		// '/success': {
@@ -37,19 +40,23 @@ export default (router) => {
 		// },
 		'/register/:userId': {
 			name:'register',
+			title: '注册',
 			component:require('./views/register.vue')
 		},
 		// wait processing completed
 		'/order/:status': {
 			name: 'order',
+			title: '订单',
 			component:require('./views/order.vue')
 		},
 		// apply record
 		'/getCash/:status': {
 			name: 'getCash',
+			title: '提现',
 			component:require('./views/getCash.vue')
 		},
 		'*': {
+			title: '404',
 			component: require('./views/404.vue')			
 		}
 	})
