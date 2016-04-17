@@ -110,7 +110,8 @@ export default {
 			var host = window.location.host
 			var pathname = window.location.pathname
 			var userId = this.user.id
-      return `http://${host}/register/${userId}`
+			var username = this.user.name
+      return `http://${host}/register/${userId}/${username}`
     }
 	},
 	methods: {

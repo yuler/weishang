@@ -16,6 +16,10 @@
                           <label for="">用户地址：</label>
                           			<input type="text" placeholder="请输入用户地址" v-model="user.address" required>
                           </div>
+                          <div class="box-item">
+                          <label for="">姓名：</label>
+                                <input type="text" placeholder="请输入姓名" v-model="user.name" required>
+                          </div>
                           <div class="box-item" >
                             <button class="btn full-btn" type="submit">保存</button>
                           </div>
