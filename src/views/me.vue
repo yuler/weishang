@@ -5,7 +5,7 @@
 			<div class="user-bg"><img src='/static/i/user-bg.png' /></div>
 			<div class="user-info margin-space">
 				<span class="user-pic">
-					<img v-bind:src="user.photo | getImagePoster">
+					<img  src="/static/i/LOGO2.png">
 				</span>
 				<span class="info-text">
 					<div class="user-address"><i class="fa fa-map-marker"></i>{{user.address}}</div>
