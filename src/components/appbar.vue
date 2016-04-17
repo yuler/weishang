@@ -1,10 +1,16 @@
 <template>
 <header>
 		<a href="javascript:history.go(-1)"><i class="fa fa-3x fa-angle-left"></i></a>
-		<h1>主页</h1>
+		<h1>{{ title }}</h1>
 		<a v-link="{ name: 'me' }"><i class="fa fa-2x fa-user"></i></a>
 </header>
 </template>
+
+<script>
+export default {
+	props: ['title']
+}
+</script>
 
 <style lang="stylus" scoped>
 @import "../assets/_variables.styl"
@@ -40,7 +46,3 @@ header
 		color white
 		display block
 </style>
-
-<script>
-
-</script>

@@ -19,8 +19,13 @@ Vue.use(VueResource)
 var router = new VueRouter({
   hashbang: false,
   history: true,
-  saveScrollPosition: true,
+  saveScrollPosition: false,
   // root: '/vs/weishang/'
+})
+
+// 修改 appbar 标题
+router.afterEach(function (transition) {
+  router.app.changeAppbarTitle(transition.to.title)
 })
 
 routers(router)

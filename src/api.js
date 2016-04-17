@@ -16,6 +16,7 @@ const API_USER_REGISTER_URL = `${HOST}/front/user/register`
 const API_USER_LOGIN_URL = `${HOST}/front/user/login`
 const API_USER_LOGOUT_URL = `${HOST}/front/user/logout`
 const API_GET_USER_URL = `${HOST}/front/user/info`
+const API_UPDATE_USER_URL = `${HOST}/front/user/update`
 const API_USER_AUTH_PAY_URL = `${HOST}/front/pay/userPay`
 const API_USER_ORDER_PAY_URL = `${HOST}/front/pay/orderPay`
 
@@ -52,6 +53,9 @@ export default {
 	user: {
 		get (id) {
 			return Vue.http.get(API_GET_USER_URL, { id: id} )
+		},
+		update (user) {
+			return Vue.http.post(API_UPDATE_USER_URL, user)
 		},
 		regsiter (user) {
 			return Vue.http.post(API_USER_REGISTER_URL, user )

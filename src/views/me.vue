@@ -14,7 +14,7 @@
 					</div>
 				</span>
 				<div class="user-pannel"><i class="icon user"></i><span class="user-name">{{user.loginName}}</span></div>
-				<div class="control-pannel"><i class="icon settings"></i> <span @click="logout">编辑</span></div>
+				<div class="control-pannel" v-link="{ name: 'editUser' }"><i class="fa fa-conf"></i> <span>编辑</span></div>
 			</div>
 		</div>
 		<div class="floor-item floor-space">
@@ -63,9 +63,9 @@
 	<div class="floor-item">
     	<div class="detail-box margin-space-s">
           <div class="box-item split-line">
-                      				<label for="">银行名称：</label>
-                                      			<input type="text" placeholder="银行名称" v-model="bank.name">
-                      				</div>
+	  				<label for="">银行名称：</label>
+	                  			<input type="text" placeholder="银行名称" v-model="bank.name">
+	  				</div>
 
            <div class="box-item split-line">
            	<label for="">银行卡号：</label>
@@ -287,4 +287,9 @@ form.fade-transition
 	bottom 0px
 form.fade-enter, div.fade-leave
 	bottom 0px
+	
+
+input#shareUrl {
+	width 100px
+}
 </style>

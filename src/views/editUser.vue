@@ -1,20 +1,20 @@
 <template>
     <div class="viewports">
     	<div class="container">
-    	    <form class="user-edit">
+    	    <form class="user-edit" @submit.prevent="save">
             	<div class="floor-item">
                     	<div class="detail-box margin-space-s">
                           <div class="box-item split-line">
                           <label for="">用户名称：</label>
-                          			<input type="text" placeholder="请输入用户名" >
+                          			<input type="text" placeholder="请输入用户名" v-model="user.name" required>
                           </div>
                           <div class="box-item split-line">
                           <label for="">手机号码：</label>
-                          			<input type="tel" placeholder="请输入手机号码" >
+                          			<input type="tel" placeholder="请输入手机号码" v-model="user.mobile" disabled="true">
                           </div>
                           <div class="box-item">
                           <label for="">用户地址：</label>
-                          			<input type="text" placeholder="请输入用户地址" >
+                          			<input type="text" placeholder="请输入用户地址" v-model="user.address" required>
                           </div>
                           <div class="box-item" >
                             <button class="btn full-btn" type="submit">保存</button>
@@ -25,6 +25,41 @@
     	</div>
     </div>
 </template>
+
+<script>
+import api from '../api.js'
+
+export default {
+  data () {
+    return {
+      user: {}
+    }
+  },
+  route: {
+    data() {
+      api.user.me()
+        .then( res => {
+          this.user = res.data
+        }, err => {
+          if( err.status !== 401) this.$router.app.snackbar('error', '服务器异常')
+        })
+    }
+  },
+  methods: {
+    save () {
+      api.user.update( this.user )
+        .then( res => {
+          // this.$router.go({name: 'me', replace: true})
+          window.history.back();
+          this.$router.app.snackbar('success', '保存成功')
+        }, err => {
+          if( err.status !== 401) this.$router.app.snackbar('error', '服务器异常')
+        })
+    }
+  }
+
+}
+</script>
 
 <style>
     .user-edit .detail-box{}

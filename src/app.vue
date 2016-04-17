@@ -1,5 +1,5 @@
 <template>
-	<appbar></appbar>
+	<appbar v-bind:title="title"></appbar>
 	<div class="container">
 		<router-view></router-view>
 	</div>
@@ -74,13 +74,14 @@ import Appbar from './components/appbar.vue'
 export default {
 	data () {
 		return {
+			title: '',
 			loading: false,
 			snackbarMsg: null
 		}
 	},
   ready () {
   	// 拦截器
-  	var _this = this;
+  	var _this = this
     Vue.http.interceptors.push({
       request(req){
       		_this.loading = true
@@ -114,6 +115,9 @@ export default {
 		},
 		closeIndicator () {
 			this.loading = false
+		},
+		changeAppbarTitle(title) {
+			this.title = title
 		}
 	}
 }

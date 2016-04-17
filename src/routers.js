@@ -2,6 +2,7 @@ export default (router) => {
 	router.map({
 		'/': {
 			name: 'index',
+			title: '主页',
 			component: require('./views/index.vue')
 		},
 		'/category': {
@@ -10,10 +11,12 @@ export default (router) => {
 		},
 		'/login': {
 			name: 'login',
+			title: '登陆',
 			component: require('./views/login.vue')
 		},
 		'/me': {
 			name: 'me',
+			title: '个人中心',
 			component: require('./views/me.vue')
 		},
 		'/p/:id': {
