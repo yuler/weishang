@@ -38,7 +38,7 @@ export default (router) => {
 		// 	name:'success',
 		// 	component:require('./views/register-success.vue')
 		// },
-		'/register/:userId': {
+		'/register/:userId/:name': {
 			name:'register',
 			title: '注册',
 			component:require('./views/register.vue')
