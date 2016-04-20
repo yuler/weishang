@@ -2,7 +2,8 @@
 <div id="productionShow">
 	<img v-bind:src="production.photoIds | getImagePoster">
 	<h1>{{production.name}}</h1>
-	<p class="addrs">商品产地</p>
+	<!-- <p> {{  }}</p> -->
+	<p class="price">￥ {{ production.price}}</p>
 	<hr>
 	<p class="intro" v-html="production.summary"></p>
 	<a class="btn" @click="buy()" v-if="state.buy && !state.pay">购买</a>
@@ -139,6 +140,8 @@ export default {
 			margin-bottom 10px
 		&.intro
 			font-size 14px
+		&.price
+			color: red
 	a.btn
 		padding-left 0
 		text-decoration none

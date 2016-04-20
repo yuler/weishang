@@ -7,7 +7,9 @@
 					<span class="all-icon" v-link="{ name: 'category' }">全部商品</span>
 				</div>
 				<div class="home-bg">
-					<img v-bind:src="b.imagePath | banner" v-for="b in banner" v-if="$index == 0">
+					<a href="{{ b.targetUrl }}" v-for="b in banner" v-if="$index == 0">
+						<img v-bind:src="b.imagePath | banner">
+					</a>
 				</div>
 			</div>
 			<div class="floor-item">
