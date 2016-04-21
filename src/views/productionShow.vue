@@ -1,8 +1,7 @@
 <template>
 <div id="productionShow">
-	<img v-bind:src="production.photoIds | getImagePoster">
+	<Carousel :imgs="imgs"></Carousel>
 	<h1>{{production.name}}</h1>
-	<!-- <p> {{  }}</p> -->
 	<p class="price">￥ {{ production.price}}</p>
 	<hr>
 	<p class="intro" v-html="production.summary"></p>
@@ -43,11 +42,14 @@ import Carousel from '../components/Carousel.vue'
 export default {
 	data () {
 		return {
+
 			order: {
 				'products[0].id': null,
 				'products[0].sum': null,
 			},
-			production: {},
+			production: {
+				photoIds: ''
+			},
 			state: {
 				buy: true,
 				pay: false
@@ -58,9 +60,8 @@ export default {
 		data ({ to : { params: { id }}}) {
 			return api.productions.get(id)
 				.then(res => {
-					console.log(res);
 					return {
-						production: res.data,
+						production: res.data
 					}
 				}, err => {
 					console.log(err);
@@ -114,6 +115,16 @@ export default {
 		},
 		stopEvent (e) {
 			e.stopPropagation()
+		}
+	},
+	computed: {
+		imgs: function () {
+			var tmpArr = []
+			this.production.photoIds.split('|').map(function (url) {
+				if(url)
+					tmpArr.push({targetUrl:url, imagePath:url})
+			})
+			return tmpArr
 		}
 	},
 	components: {

@@ -15,7 +15,7 @@
 				</span>
 				<div class="user-pannel"><i class="icon user"></i><span class="user-name">{{user.name}}</span></div>
 				<div class="control-pannel edit" v-link="{ name: 'editUser' }"><i class="fa fa-conf"></i> <span>编辑</span></div>
-				<div class="control-pannel" @logout><i class="fa fa-conf"></i> <span>退出</span></div>
+				<div class="control-pannel" @click="logout"><i class="fa fa-conf"></i> <span>退出</span></div>
 			</div>
 		</div>
 		<div class="floor-item floor-space">

@@ -24,7 +24,7 @@
 		<div class="tuijian-container">
 			<img src="/static/i/user-pic.png"/>
 			<span class="tuijian-info">
-			{{ user.tjrname }}
+			{{ tjrname }}
 			</span>
 		</div>
 		<br>	
@@ -45,12 +45,14 @@ export default {
 	data () {
 		return {
 			user: { },
+			tjrname: ''
 		}
 	},
 	route: {
 		data ({ to }) {
 			this.user.tjr = this.$route.params.userId;
-			this.user.tjrname = this.$route.params.name;
+			this.tjrname = this.$route.params.name;
+			console.log(this.user.tjrname);
 		}
 	},
 	methods: {
