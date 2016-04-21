@@ -6,7 +6,7 @@ const PAGE_SIZE = 10
 // 常量 API 接口地址
 const HOST = '/vs'
 // banner 
-const API_GET_BANNER = `${HOST}/front/ad`
+const API_GET_BANNER = `${HOST}/front/ad/list`
 // proudctions
 const API_PRODUCT_INDEX_API = `${HOST}/front/product`
 const API_PRODUCT_SHOW_API = `${HOST}/front/product/info`
@@ -32,7 +32,7 @@ Vue.http.options.emulateJSON = true
 
 export default {
 	banner () {
-		return Vue.http.post(API_GET_BANNER, { type: 0 })
+		return Vue.http.post(API_GET_BANNER)
 	},
 	productions: {
 		index: (pageNo = PAGE_NO, pageSize = PAGE_SIZE) => {

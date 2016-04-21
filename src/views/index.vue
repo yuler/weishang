@@ -6,12 +6,13 @@
 					<i class="weishang-icon "></i>
 					<span class="all-icon" v-link="{ name: 'category' }">全部商品</span>
 				</div>
-				<div class="home-bg">
+				<!-- <div class="home-bg">
 					<a href="{{ b.targetUrl }}" v-for="b in banner" v-if="$index == 0">
 						<img v-bind:src="b.imagePath | banner">
 					</a>
-				</div>
+				</div> -->
 			</div>
+			<carousel :imgs="banner[0]"></carousel>
 			<div class="floor-item">
 				<div class="activity-container">
 					<div class="activity-left" v-for="p in productions" track-by="$index" v-link="{ name: 'productionShow', params: { id: p.id }}" v-if="$index == 0">
@@ -32,7 +33,7 @@
 				<div class="list-container">
 					<ul class="list-data">
 						<li v-for="p in productions" track-by="$index" v-link="{ name: 'productionShow', params: { id: p.id }}">
-							<div class="list-item" v-if="$index >= 3">
+							<div class="list-item">
 								<img v-bind:src="p.photoIds | getImagePoster">
 								<div class="product-name">{{ p.name }}</div>
 								<div class="product-price red">￥ {{ p.price }}</div>
@@ -47,11 +48,12 @@
 
 <script>
 import api from '../api.js'
+import Carousel from '../components/Carousel.vue'
 
 export default {
 	data () {
 		return {
-			banner: {},
+			banner: [],
 			productions: [],
 			pagination: {
 				page: 1,
@@ -63,7 +65,7 @@ export default {
 		data ({ to }) {
 			api.banner()
 				.then(res => {
-					this.banner = res.data.ads
+					this.banner = res.data
 				}, err => {
 					console.log(err)
 				})
@@ -75,6 +77,9 @@ export default {
 					alert('接口错误')
 				})
 		}
+	},
+	components: {
+		Carousel
 	}
 }
 
@@ -168,7 +173,8 @@ export default {
 	}
 	.home-pannel .list-container img{
 		width: 100%;
-		height: 100%;
+		/*height: 100%;*/
+		max-height: 106px;
 	}
 	.list-container .list-data .product-name{
 		height: 30px;

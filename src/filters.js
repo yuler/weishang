@@ -1,5 +1,10 @@
 export function getImagePoster (string) {
-	return string ? 'http://123.56.235.156/' + string.split('|')[1] : ''
+	if(!string)
+		return ''
+	var arr = string.split('|').filter(function (img) {
+		return img
+	})
+	return arr[0]
 }
 
 export function banner(string) {
