@@ -22,9 +22,14 @@
 						
 					</div>
 					<div class="activity-right">
-						<div class="activity-right-item" v-for="p in productions" track-by="$index" v-link="{ name: 'productionShow', params: { id: p.id }}" v-if="$index == 1 || $index == 2">
-						   <div class="activity-right-item">
-							<img v-bind:src="p.photoIds | getImagePoster" style="width:180px;height:70px;"></div>
+						<div class="activity-right-item" 
+							v-for="p in productions" 
+							track-by="$index" 
+							v-link="{ name: 'productionShow', params: { id: p.id }}" 
+							v-if="$index == 1 || $index == 2">
+						   	<div class="activity-right-item-img">
+								<img v-bind:src="p.photoIds | getImagePoster" />
+							</div>
 						</div>
 					</div>
 				</div>
@@ -138,10 +143,6 @@ export default {
 		width: 100%;
 		height: 100%;
 	}
-	.home-pannel .activity-container .activity-right{
-		display: inline-block;
-		width: 56.25%;
-	}
 	.activity-container{
 		border-bottom: 1px solid #cbcbcb;
 	}
@@ -208,4 +209,24 @@ export default {
 	.activity-right-item:last-child{
 		border-bottom: none;
 	}
+
+	.home-pannel .activity-container .activity-right{		
+		width: 56%;display:block;
+	}
+	.home-pannel .activity-container{position:relative;}
+
+	.activity-right{
+		width:44%;float:right;position:relative;
+	}
+	.activity-right-item{
+		position:absolute;width:100%;padding-top:40%;overflow:hidden;
+	}
+	.activity-right-item:last-child{
+		margin-top:38%;
+	}
+	.activity-right-item:before{
+		
+	}
+	.activity-right-item-img{position:absolute;top:0;}
+	.activity-right-item img{width:100%;height:auto;}
 </style>
