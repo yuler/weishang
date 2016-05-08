@@ -55,6 +55,11 @@ export default (router) => {
 			title: '提现',
 			component:require('./views/getCash.vue')
 		},
+		'/qrcodeDetail/:id/:name': {
+			name: 'qrcodeDetail',
+			title: '分享二维码详情',
+			component:require('./views/qrcodeDetail.vue')
+		},
 		'*': {
 			title: '404',
 			component: require('./views/404.vue')			

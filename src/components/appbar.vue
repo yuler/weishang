@@ -1,6 +1,7 @@
 <template>
 <header>
-		<a href="javascript:history.go(-1)"><i class="fa fa-3x fa-angle-left"></i></a>
+		<a v-link="{ name: 'index' }" v-if="isRegisterView"><i class="fa fa-3x fa-angle-left"></i></a>
+		<a href="javascript:history.go(-1)" v-if="!isRegisterView"><i class="fa fa-3x fa-angle-left"></i></a>
 		<h1>{{ title }}</h1>
 		<a v-link="{ name: 'me' }"><i class="fa fa-2x fa-user"></i></a>
 </header>
@@ -8,7 +9,12 @@
 
 <script>
 export default {
-	props: ['title']
+	props: ['title'],
+	computed: {
+		isRegisterView() {
+			return this.$route.name === 'register' || this.$route.name === 'productionShow' ? true : false
+		}
+	}
 }
 </script>
 
