@@ -94,8 +94,8 @@ export default {
 		width:100%;
 	}
 	.title-container{
-		height: 36px;
-		line-height: 36px;
+		height: 40px;
+		line-height: 40px;
 		position: relative;
 		    font-size: 15px;
 		    color: #dfbd98;
@@ -163,9 +163,20 @@ export default {
 		background-color: #cbcbcb;
 	}
 	.list-container .list-data .list-item{
-		border-bottom: 1px solid #cbcbcb;
-		border-right: 1px solid #cbcbcb;
 		padding-bottom: 10px;
+		position: relative;
+	}
+	.list-container .list-data .list-item:after{
+		height: 100%;
+    	content: '';
+    	width: 1px;
+    	border-right: 1px solid #cbcbcb;
+    	position: absolute;
+    	top: 0;
+    	right: 0;
+    	transform: scaleX(.5);
+    	-webkit-transform: scaleX(.5);
+    		
 	}
 	.list-container .list-data .list-item:last-child{
 		/*border-right: none;*/
@@ -195,8 +206,7 @@ export default {
 		color: #cbcbcb;
 	}
 	.home-pannel .floor-item{
-		margin-bottom: 8px;
-		border-top: 1px solid #cbcbcb;
+		
 	}
 	.home-pannel .activity-left .img-container{
 		border-right: 1px solid #cbcbcb;

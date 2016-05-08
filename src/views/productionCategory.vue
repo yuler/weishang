@@ -2,7 +2,7 @@
 <div class="viewports">
 	<div class="container product-pannel">
 		<div class="floor-item">
-			<ul class="product-list" @scroll="scrollFunc">
+			<ul class="product-list" @scroll="scrollFunc" id="productList">
 				<li class="split-line" v-for="p in productions" v-link="{ name: 'productionShow', params: { id: p.id }}">
 					<div class="product-content ">
 						<span class="product-pic">
@@ -20,10 +20,12 @@
 				</li>
 			</ul>
 		</div>
+		<div report-eventid="MHome_BacktoTop" @click='backClick' page_name="index" class="bottom-to-top J_ping" id="indexToTop">
+            <img src="/static/i/scroll-to-top-icon.png" style="width: 100%;">
+        </div>
 	</div>
 </div>
 </template>
-
 <script>
 import api from '../api.js'
 
@@ -53,6 +55,7 @@ export default {
 	},
 	methods: {
 		scrollFunc: function (e) {
+			var oUP = document.querySelector('#indexToTop');
 			if (!this.noMoreData && (e.target.scrollTop + e.target.offsetHeight) >= e.target.scrollHeight) {
 				this.pagination.page++
 				api.productions.index(this.pagination.page, this.pagination.limit)
@@ -67,10 +70,26 @@ export default {
 						// alert('接口错误');
 					})
 			}
+			var clientHeight = document.documentElement.clientHeight || document.body.clientHeight;
+			var scrollTop = e.target.scrollTop;
+			if(scrollTop>clientHeight*2){
+				                oUP.style.display='block';
+				            }else{
+				                oUP.style.display='none';
+				            }
+		},
+		backClick:function(e){
+			var oUP = document.querySelector('#indexToTop');
+			var ulO=document.querySelector('#productList');
+			ulO.scrollTop=0;	
+			oUP.style.display='none';
 		}
 	}
 }
+
+
 </script>
+
 
 <style lang="stylus" scoped>
 .floor-item {
@@ -145,7 +164,7 @@ ul
 		height:auto;
 	}
 	.product-pannel .product-info{
-		margin-left:80px;
+		margin-left:85px;
 		margin-right:45px;
 	}
 	.product-pannel .product-info div{
@@ -213,6 +232,18 @@ ul
    bproduct-bottom: solid 2px #155882;
    color: #155882;
  }
+.bottom-to-top {
+    position: fixed;
+    bottom: 56px;
+    right: 8px;
+    width: 35px;
+    height: 35px;
+    z-index: 20;
+    display: none;
+    transform-origin: 0;
+    opacity: 1;
+    transform: scale(1,1);
+}
 </style>
 
 
