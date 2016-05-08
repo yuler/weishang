@@ -15,20 +15,18 @@
 			<carousel :imgs="banner[0]"></carousel>
 			<div class="floor-item">
 				<div class="activity-container">
-					<div class="activity-left" v-for="p in productions" track-by="$index" v-link="{ name: 'productionShow', params: { id: p.id }}" v-if="$index == 0">
+					<div class="activity-left" v-for="p in banner[2]" track-by="$index" v-link="{ path: p.targetUrl}" v-if="$index == 0">
 						<div class="img-container">
-<img v-bind:src="p.photoIds | getImagePoster">
+							<img v-bind:src="p.imagePath | getImagePoster">
 						</div>
-						
 					</div>
 					<div class="activity-right">
 						<div class="activity-right-item" 
-							v-for="p in productions" 
+							v-for="p in banner[1]" 
 							track-by="$index" 
-							v-link="{ name: 'productionShow', params: { id: p.id }}" 
-							v-if="$index == 1 || $index == 2">
+							v-link="{ path: p.targetUrl}">
 						   	<div class="activity-right-item-img">
-								<img v-bind:src="p.photoIds | getImagePoster" />
+								<img v-bind:src="p.imagePath | getImagePoster" />
 							</div>
 						</div>
 					</div>
