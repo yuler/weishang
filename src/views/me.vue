@@ -36,9 +36,11 @@
 					<span class="btn btn-info" v-link="{ name: 'order', params: {status: 'wait' }}">查看</span>
 				</div>
 				<div class="box-item ">
-					<span class="cash-tag">推荐注册地址:</span>
-					<input id="shareUrl" type="text" value="{{ shareRegisterUrl }}">
-					<span class="btn btn-info" @click="copyShareUrl">复制</span>
+					<span class="cash-tag">推荐注册二维码:</span>
+					<br>
+			<!-- 		<input id="shareUrl" type="text" value="{{ shareRegisterUrl }}">
+					<span class="btn btn-info" @click="copyShareUrl">复制</span> -->
+					<img :src="shareRegisterUrlImg" @click="goQrcodeDetail"></img>
 				</div>
 			</div>
 		</div>
@@ -89,6 +91,7 @@
 import api from '../api.js'
 
 export default {
+	
 	data () {
 		return {
 			user: {},
@@ -111,8 +114,11 @@ export default {
 			var host = window.location.host
 			var pathname = window.location.pathname
 			var userId = this.user.id
-			var username = this.user.name
+			var username = encodeURIComponent(this.user.name)
       return `http://${host}/register/${userId}/${username}`
+    },
+    shareRegisterUrlImg() {
+    	return qr.toDataURL(this.shareRegisterUrl)
     }
 	},
 	methods: {
@@ -203,6 +209,9 @@ export default {
 				.then( res => {
 
 				})
+		},
+		goQrcodeDetail () {
+			this.$router.go({ name: 'qrcodeDetail', params: { id: this.user.id, name: this.user.name } })
 		}
 	}
 }
