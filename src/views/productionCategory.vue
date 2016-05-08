@@ -2,7 +2,7 @@
 <div class="viewports">
 	<div class="container product-pannel">
 		<div class="floor-item">
-			<ul class="product-list">
+			<ul class="product-list" @scroll="scrollFunc">
 				<li class="split-line" v-for="p in productions" v-link="{ name: 'productionShow', params: { id: p.id }}">
 					<div class="product-content ">
 						<span class="product-pic">
@@ -73,6 +73,9 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.floor-item {
+	height 100%
+}
 ul
 	-webkit-overflow-scrolling: touch;
 	box-sizing: bproduct-box;

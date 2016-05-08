@@ -24,7 +24,7 @@
 		<div class="tuijian-container">
 			<img src="/static/i/user-pic.png"/>
 			<span class="tuijian-info">
-			李老大
+			{{ tjrname }}
 			</span>
 		</div>
 		<br>	
@@ -44,14 +44,15 @@ import api from '../api.js'
 export default {
 	data () {
 		return {
-			user: {
-				mobile: ''
-			},
+			user: { },
+			tjrname: ''
 		}
 	},
 	route: {
 		data ({ to }) {
 			this.user.tjr = this.$route.params.userId;
+			this.tjrname = this.$route.params.name;
+			console.log(this.user.tjrname);
 		}
 	},
 	methods: {
@@ -117,7 +118,7 @@ div#register-view
 				display: block;
 				padding 4px 12px
 				width: 100%;
-				padding-left:44px;
+				padding-left: 52px;
 				height 44px
 				border-radius: 0 4px 4px 0;
 				border: 1px solid #cccccc;
@@ -133,7 +134,7 @@ div#register-view
 				font-size 14px
 				border-radius: 0 4px 4px 0;
 				position: absolute;
-				margin-top: 0;
+				margin-top: -44px;
 				height: 44px;
 				right: 9px;
 				width: auto;

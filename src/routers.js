@@ -38,7 +38,7 @@ export default (router) => {
 		// 	name:'success',
 		// 	component:require('./views/register-success.vue')
 		// },
-		'/register/:userId': {
+		'/register/:userId/:name': {
 			name:'register',
 			title: '注册',
 			component:require('./views/register.vue')
@@ -54,6 +54,11 @@ export default (router) => {
 			name: 'getCash',
 			title: '提现',
 			component:require('./views/getCash.vue')
+		},
+		'/qrcodeDetail/:id/:name': {
+			name: 'qrcodeDetail',
+			title: '分享二维码详情',
+			component:require('./views/qrcodeDetail.vue')
 		},
 		'*': {
 			title: '404',

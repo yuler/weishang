@@ -1,8 +1,8 @@
 <template>
 <div id="productionShow">
-	<img v-bind:src="production.photoIds | getImagePoster">
+	<Carousel :imgs="imgs"></Carousel>
 	<h1>{{production.name}}</h1>
-	<p class="addrs">商品产地</p>
+	<p class="price">￥ {{ production.price}}</p>
 	<hr>
 	<p class="intro" v-html="production.summary"></p>
 	<a class="btn" @click="buy()" v-if="state.buy && !state.pay">购买</a>
@@ -37,15 +37,19 @@
 	
 <script>
 import api from '../api.js'
+import Carousel from '../components/Carousel.vue'
 
 export default {
 	data () {
 		return {
+
 			order: {
 				'products[0].id': null,
 				'products[0].sum': null,
 			},
-			production: {},
+			production: {
+				photoIds: ''
+			},
 			state: {
 				buy: true,
 				pay: false
@@ -56,9 +60,8 @@ export default {
 		data ({ to : { params: { id }}}) {
 			return api.productions.get(id)
 				.then(res => {
-					console.log(res);
 					return {
-						production: res.data,
+						production: res.data
 					}
 				}, err => {
 					console.log(err);
@@ -113,6 +116,19 @@ export default {
 		stopEvent (e) {
 			e.stopPropagation()
 		}
+	},
+	computed: {
+		imgs: function () {
+			var tmpArr = []
+			this.production.photoIds.split('|').map(function (url) {
+				if(url)
+					tmpArr.push({targetUrl:url, imagePath:url})
+			})
+			return tmpArr
+		}
+	},
+	components: {
+		'Carousel': Carousel
 	}
 }
 
@@ -120,7 +136,6 @@ export default {
 
 <style lang="stylus" scoped>
 @import '../assets/_variables.styl'
-
 #productionShow
 	padding 10px 15px 50px 15px
 	img
@@ -136,6 +151,8 @@ export default {
 			margin-bottom 10px
 		&.intro
 			font-size 14px
+		&.price
+			color: red
 	a.btn
 		padding-left 0
 		text-decoration none

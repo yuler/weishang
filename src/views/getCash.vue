@@ -46,7 +46,7 @@
 			<div class='floor-item' style="height:60px;"></div>
 			<div class="floor-item cash-bar split-line-up">
 				<div class="bar-pannel">
-					<input type="number" placeholder="输入提现金额"  class="cash-input" />
+					<input type="number" placeholder="输入提现金额" class="cash-input" v-model="withdraw.price" />
 					<span class="btn cash-btn" id="getCode" @click="withdrawCash">确定</span>
 				</div>
 			</div>
@@ -127,6 +127,8 @@ export default {
 				.then( res => {
 					if( res.data.success !== true)
 						return this.$router.app.snackbar('warning', res.data.msg)
+					this.bankCard = {}
+					this.withdraw = {}
 					this.$router.go({ name: 'getCash', replace: true, params: {status: 'record'} })
 				}, err => {
 					if( err.status !== 401) this.$router.app.snackbar('error', '服务器异常')

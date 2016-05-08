@@ -13,8 +13,9 @@
 						<span class="phone"><i class="fa fa-mobile"></i> {{user.mobile}}</span>
 					</div>
 				</span>
-				<div class="user-pannel"><i class="icon user"></i><span class="user-name">{{user.loginName}}</span></div>
-				<div class="control-pannel" v-link="{ name: 'editUser' }"><i class="fa fa-conf"></i> <span>编辑</span></div>
+				<div class="user-pannel"><i class="icon user"></i><span class="user-name">{{user.name}}</span></div>
+				<div class="control-pannel edit" v-link="{ name: 'editUser' }"><i class="fa fa-conf"></i> <span>编辑</span></div>
+				<div class="control-pannel" @click="logout"><i class="fa fa-conf"></i> <span>退出</span></div>
 			</div>
 		</div>
 		<div class="floor-item floor-space">
@@ -35,9 +36,11 @@
 					<span class="btn btn-info" v-link="{ name: 'order', params: {status: 'wait' }}">查看</span>
 				</div>
 				<div class="box-item ">
-					<span class="cash-tag">推荐注册地址:</span>
-					<input id="shareUrl" type="text" value="{{ shareRegisterUrl }}">
-					<span class="btn btn-info" @click="copyShareUrl">复制</span>
+					<span class="cash-tag">推荐注册二维码:</span>
+					<br>
+			<!-- 		<input id="shareUrl" type="text" value="{{ shareRegisterUrl }}">
+					<span class="btn btn-info" @click="copyShareUrl">复制</span> -->
+					<img :src="shareRegisterUrlImg" @click="goQrcodeDetail"></img>
 				</div>
 			</div>
 		</div>
@@ -88,6 +91,7 @@
 import api from '../api.js'
 
 export default {
+	
 	data () {
 		return {
 			user: {},
@@ -110,7 +114,11 @@ export default {
 			var host = window.location.host
 			var pathname = window.location.pathname
 			var userId = this.user.id
-      return `http://${host}/register/${userId}`
+			var username = encodeURIComponent(this.user.name)
+      return `http://${host}/register/${userId}/${username}`
+    },
+    shareRegisterUrlImg() {
+    	return qr.toDataURL(this.shareRegisterUrl)
     }
 	},
 	methods: {
@@ -201,6 +209,9 @@ export default {
 				.then( res => {
 
 				})
+		},
+		goQrcodeDetail () {
+			this.$router.go({ name: 'qrcodeDetail', params: { id: this.user.id, name: this.user.name } })
 		}
 	}
 }
@@ -224,6 +235,7 @@ export default {
 .info-pannel .user-phone{font-size: 15px;color: #666666; padding-left: 85px;margin-top: 10px;}
 .info-pannel .control-pannel{position: absolute;right: 32px;font-size: 14px;color: #A0A0A0;bottom: 5px;}
 .info-pannel .control-pannel i{font-style: normal}
+.info-pannel .control-pannel.edit { right: 80px}
 .info-pannel .detail-box{}
 .info-pannel .box-item{font-size: 16px;color: #666666;padding: 16px 0 16px 0;}
 .info-pannel .box-item .cash-number{font-size: 15px;}
