@@ -2,7 +2,7 @@
 	<div id='carousel' class='swipe'>
 		<div class='swipe-wrap'>
 			<div v-for="img in imgs">
-				<a :href="img.targetUrl"><img :src="img.imagePath | getImagePoster"></a>
+				<a :href="img.targetUrl"><img :src="img.imagePath | getImagePoster |getBannerImagePoster"></a>
 			</div>
 		</div>
 	</div>

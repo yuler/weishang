@@ -6,7 +6,7 @@
 				<li class="split-line" v-for="p in productions" v-link="{ name: 'productionShow', params: { id: p.id }}">
 					<div class="product-content ">
 						<span class="product-pic">
-							<img v-bind:src="p.photoIds | getImagePoster">
+							<img v-bind:src="p.photoIds | getImagePoster | getThumbImagePoster">
 						</span>
 						<div class="product-info">
 							<div class="product-name">{{p.name}}</div>

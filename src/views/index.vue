@@ -17,7 +17,7 @@
 				<div class="activity-container">
 					<div class="activity-left" v-for="p in banner[2]" track-by="$index" v-link="{ path: p.targetUrl}" v-if="$index == 0">
 						<div class="img-container">
-							<img v-bind:src="p.imagePath | getImagePoster">
+							<img v-bind:src="p.imagePath | getImagePoster | getBannerImagePoster">
 						</div>
 					</div>
 					<div class="activity-right">
@@ -26,7 +26,7 @@
 							track-by="$index" 
 							v-link="{ path: p.targetUrl}">
 						   	<div class="activity-right-item-img">
-								<img v-bind:src="p.imagePath | getImagePoster" />
+								<img v-bind:src="p.imagePath | getImagePoster | getBannerRightImagePoster" />
 							</div>
 						</div>
 					</div>
@@ -37,7 +37,7 @@
 					<ul class="list-data">
 						<li v-for="p in productions" track-by="$index" v-link="{ name: 'productionShow', params: { id: p.id }}">
 							<div class="list-item">
-								<img v-bind:src="p.photoIds | getImagePoster">
+								<img v-bind:src="p.photoIds | getImagePoster | getThumbImagePoster">
 								<div class="product-name">{{ p.name }}</div>
 								<div class="product-price red">￥ {{ p.price }}</div>
 							</div>

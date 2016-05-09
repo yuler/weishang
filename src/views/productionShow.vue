@@ -45,7 +45,7 @@ export default {
 
 			order: {
 				'products[0].id': null,
-				'products[0].sum': null,
+				'products[0].sum': 1,
 			},
 			production: {
 				photoIds: ''
